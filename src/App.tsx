@@ -10,18 +10,18 @@ import {
   X,
 } from "lucide-react";
 
-const heroImage = "src/imports/hero.webp";
-const clinicImage = "src/imports/taj.jpeg";
-const Construction = "src/imports/mei.jpeg";
-const Construction2 = "src/imports/sam.jpeg";
-const ecommerce = "src/imports/switch.jpeg"
-const ecommerce2 = "src/imports/qaro2a.jpeg"
-const display ="src/imports/display.jpeg"
-const apex ="src/imports/apex.jpeg"
-const porfolio ="src/imports/porfolio.jpeg"
-const porfolio2 ="src/imports/porfolio2.jpeg"
-const porfolio3 ="src/imports/porfolio3.jpeg"
-const ronin ="src/imports/ronin.jpeg"
+import heroImage from "./imports/hero.webp";
+import clinicImage from "./imports/taj.jpeg";
+import Construction from "./imports/mei.jpeg";
+import Construction2 from "./imports/sam.jpeg";
+import ecommerce from "./imports/switch.jpeg";
+import ecommerce2 from "./imports/qaro2a.jpeg";
+import display from "./imports/display.jpeg";
+import apex from "./imports/apex.jpeg";
+import porfolio from "./imports/porfolio.jpeg";
+import porfolio2 from "./imports/porfolio2.jpeg";
+import porfolio3 from "./imports/porfolio3.jpeg";
+import ronin from "./imports/ronin.jpeg";
 const categories = ["Healthcare", "Construction", "E-commerce", "Business", "Portfolio", "UI/UX"];
 
 const projects = [
