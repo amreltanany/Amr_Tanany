@@ -23,7 +23,7 @@ import porfolio2 from "./imports/porfolio2.jpeg";
 import porfolio3 from "./imports/porfolio3.jpeg";
 import ronin from "./imports/ronin.jpeg";
 const categories = ["Healthcare", "Construction", "E-commerce", "Business", "Portfolio", "UI/UX"];
-
+ 
 const projects = [
   {
     id: "01", category: "Healthcare", type: "HEALTHCARE / FULL-STACK", title: "TAJ Clinics",
