@@ -10,86 +10,75 @@ import {
   X,
 } from "lucide-react";
 
-import heroImage from "./imports/hero.webp";
-import clinicImage from "./imports/taj.jpeg";
-import Construction from "./imports/mei.jpeg";
-import Construction2 from "./imports/sam.jpeg";
-import ecommerce from "./imports/switch.jpeg";
-import ecommerce2 from "./imports/qaro2a.jpeg";
-import display from "./imports/display.jpeg";
-import apex from "./imports/apex.jpeg";
-import porfolio from "./imports/porfolio.jpeg";
-import porfolio2 from "./imports/porfolio2.jpeg";
-import porfolio3 from "./imports/porfolio3.jpeg";
-import ronin from "./imports/ronin.jpeg";
+
 const categories = ["Healthcare", "Construction", "E-commerce", "Business", "Portfolio", "UI/UX"];
  
 const projects = [
   {
     id: "01", category: "Healthcare", type: "HEALTHCARE / FULL-STACK", title: "TAJ Clinics",
     description: "A comprehensive healthcare management platform designed for modern clinics, featuring seamless appointment scheduling, interactive UI components, and integrated backend services.",
-    image: clinicImage, tags: ["React 19", "Node.js", "Express", "TypeScript"], accent: "olive",
+    image: `${import.meta.env.BASE_URL}imports/taj.jpeg`, tags: ["React 19", "Node.js", "Express", "TypeScript"], accent: "olive",
     url: "https://tajclinics-7f4tfgfb.manus.space/",
   },
   {
     id: "01", category: "Construction", type: "Construction / CORPORATE", title: "Meridian",
     description: "A modern corporate website for a high-end architectural and precision engineering firm, featuring dynamic project showcases, service offerings, and interactive inquiry forms.",
-    image: Construction, tags: ["React","Vite", "TypeScript", "Tailwind CSS"], accent: "copper",
+    image: `${import.meta.env.BASE_URL}imports/mei.jpeg`, tags: ["React","Vite", "TypeScript", "Tailwind CSS"], accent: "copper",
     url: "https://amreltanany.github.io/MeridianBuild/",
   },
 
   {
     id: "02", category: "Construction", type: "CONSTRUCTION / CORPORATE", title: "SAM Construction",
     description: "Developed A web platform for a leading Egyptian construction and general investments firm. Built with a clean, modern wordpress layout highlighting architectural services, corporate portfolios, and project management.",
-    image: Construction2 , tags: ["WordPress", "PHP", "Responsive Design" ,"SEO"], accent: "copper",
+    image: `${import.meta.env.BASE_URL}imports/sam.jpeg`, tags: ["WordPress", "PHP", "Responsive Design" ,"SEO"], accent: "copper",
     url: "https://samconstructions-eg.com/",
   },
   {
     id: "01", category: "E-commerce", type: "E-COMMERCE / FURNITURE", title: "Switch On",
     description: "A sleek, responsive e-commerce Platform for a modern furniture brand, focused on minimalist aesthetics, smooth user interactions, and high-quality product displays.",
-    image: ecommerce, tags: ["React", "TypeScript", "Tailwind CSS"], accent: "copper",
+    image: `${import.meta.env.BASE_URL}imports/switch.jpeg`, tags: ["React", "TypeScript", "Tailwind CSS"], accent: "copper",
     url: "https://amreltanany.github.io/Switch-On/",
   },
   {
     id: "02", category: "E-commerce", type: "E-COMMERCE / PUBLISHING", title: "Qaro2a",
     description: "Architecting complex digital ecosystems like Qaro2a, designed for author publishing, e-commerce, and broadcasting. I combine top-tier engineering with sleek UI design to deliver fast, conversion-driven platforms.",
-    image: ecommerce2, tags: ["ASP.NET Core", "SQL Server", "JWT Auth"], accent: "copper",
+    image: `${import.meta.env.BASE_URL}imports/qaro2a.jpeg`, tags: ["ASP.NET Core", "SQL Server", "JWT Auth"], accent: "copper",
     url: "http://qaro2a.com/",
   },
   {
     id: "01", category: "Business", type: "BUSINESS / OUTDOOR MEDIA", title: "Display Egypt",
     description: "Developed DisplayEgypt—a dynamic WordPress platform built for an outdoor advertising leader, highlighting street-level campaigns, digital billboards, and high-impact urban displays.",
-    image:display, tags: ["WordPress", "PHP", "Responsive Design","SEO"], accent: "olive",
+    image:`${import.meta.env.BASE_URL}imports/display.jpeg`, tags: ["WordPress", "PHP", "Responsive Design","SEO"], accent: "olive",
     url: "https://displayegypt.com/",
   },
   {
     id: "01", category: "Business", type: "Business / INTERACTIVE", title: "Apex//Nine Racing",
     description: "An original cinematic GT3 motorsport driver portfolio featuring and an immersive contact experience.",
-    image: apex, tags: ["Next.js 16", "React", " TypeScript","Tailwind"], accent: "copper",
+    image: `${import.meta.env.BASE_URL}imports/apex.jpeg`, tags: ["Next.js 16", "React", " TypeScript","Tailwind"], accent: "copper",
     url: "https://amreltanany.github.io/apex-nine-racing/",
   },
 {
     id: "01", category: "Portfolio", type: "Portfolio", title: "Portfolio",
     description: "Architected a Portfolio to serve as a high-speed central hub for cutting-edge web projects, combining slick motion design, interactive features.",
-    image: porfolio , tags: ["React + Vite"," TypeScript","Tailwind"], accent: "copper",
+    image: `${import.meta.env.BASE_URL}imports/porfolio.jpeg`, tags: ["React + Vite"," TypeScript","Tailwind"], accent: "copper",
     url: "https://amreltanany.github.io/Amr_Portfolio/",
   },
 {
     id: "02", category: "Portfolio", type: "Portfolio", title: "Portfolio",
     description: "Architected a Portfolio to serve as a high-speed central hub for cutting-edge web projects, combining slick motion design, interactive features.",
-    image: porfolio2 , tags: ["React + Vite"," TypeScript","Tailwind"], accent: "copper",
+   image: `${import.meta.env.BASE_URL}imports/porfolio2.jpeg`, tags: ["React + Vite"," TypeScript","Tailwind"], accent: "copper",
     url: "https://amreltanany.github.io/ElTanany/",
   },
 {
     id: "03", category: "Portfolio", type: "Portfolio", title: "Portfolio",
     description: "A responsive front-end showcase site highlighting developer projects, technical skills, and experience with a modern, tabbed interactive layout.",
-    image: porfolio3 , tags: ["HTML5"," GITHUB PAGES","Tailwind"], accent: "copper",
+    image: `${import.meta.env.BASE_URL}imports/porfolio3.jpeg`, tags: ["HTML5"," GITHUB PAGES","Tailwind"], accent: "copper",
     url: "https://amreltanany.github.io/portfolio-/",
   },
   {
     id: "01", category: "UI/UX", type: "CREATIVE UI", title: "Interactive Masking",
     description: "Dynamic radial-gradient mask that moves with mouse/touch events to reveal an alternate image layer underneath.",
-    image: ronin, tags: ["UI/UX", "Motion", "Interaction"], accent: "copper",
+    image: `${import.meta.env.BASE_URL}imports/ronin.jpeg`, tags: ["UI/UX", "Motion", "Interaction"], accent: "copper",
     url: "https://amreltanany.github.io/ronin/",
   },
 ];
@@ -230,7 +219,7 @@ export default function App() {
         </div>
         <div className="hero-visual reveal-in">
           <div className="hero-image-wrap">
-            <img src={heroImage} alt="Editorial workspace with interface studies" />
+            <img src={`${import.meta.env.BASE_URL}imports/hero.webp`} alt="Editorial workspace with interface studies" />
           </div>
           <div className="hero-caption">
             <span>Selected direction / 001</span>
