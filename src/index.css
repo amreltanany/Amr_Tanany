@@ -79,7 +79,9 @@ a { text-decoration: none; }
   letter-spacing: 0.04em;
   transition: color 0.2s, transform 0.2s;
 }
-.nav-links button:hover { color: var(--ivory); transform: translateY(-1px); }
+@media (hover: hover) and (pointer: fine) {
+  .nav-links button:hover { color: var(--ivory); transform: translateY(-1px); }
+}
 .nav-links .nav-cta {
   display: flex;
   align-items: center;
@@ -140,10 +142,14 @@ h1 em, h2 em { color: var(--copper-light); font-style: normal; }
   padding: 0 20px;
   transition: transform 0.18s ease-out, background 0.18s ease-out;
 }
-.button:hover { transform: translateY(-2px); }
+@media (hover: hover) and (pointer: fine) {
+  .button:hover { transform: translateY(-2px); }
+}
 .button:active { transform: scale(0.97); }
 .button-copper { color: var(--charcoal); background: var(--copper); }
-.button-copper:hover { background: var(--copper-light); }
+@media (hover: hover) and (pointer: fine) {
+  .button-copper:hover { background: var(--copper-light); }
+}
 
 .text-link {
   display: inline-flex;
@@ -155,7 +161,9 @@ h1 em, h2 em { color: var(--copper-light); font-style: normal; }
   font-size: 13px;
 }
 .text-link svg, .case-link svg { transition: transform 0.18s ease-out; }
-.text-link:hover svg, .case-link:hover svg { transform: translate(3px, -3px); }
+@media (hover: hover) and (pointer: fine) {
+  .text-link:hover svg, .case-link:hover svg { transform: translate(3px, -3px); }
+}
 
 .hero-meta { display: flex; gap: 27px; color: #77736c; margin-top: 92px; }
 
@@ -244,7 +252,9 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   place-items: center;
   transition: background 0.2s, transform 0.2s;
 }
-.circle-link:hover { background: var(--copper); color: var(--charcoal); transform: rotate(45deg); }
+@media (hover: hover) and (pointer: fine) {
+  .circle-link:hover { background: var(--copper); color: var(--charcoal); transform: rotate(45deg); }
+}
 
 /* Case study rail layout */
 .case-study-layout {
@@ -286,11 +296,15 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   transition: color 0.2s ease-out, border-color 0.2s ease-out, background 0.2s ease-out, transform 0.2s ease-out;
 }
 .case-category-rail .category-tabs button span { color: var(--copper); font-size: 9px; }
-.case-category-rail .category-tabs button:hover { color: var(--ivory); border-color: var(--line); transform: translateY(-2px); }
+@media (hover: hover) and (pointer: fine) {
+  .case-category-rail .category-tabs button:hover { color: var(--ivory); border-color: var(--line); transform: translateY(-2px); }
+}
 .case-category-rail .category-tabs button.active { color: var(--charcoal); background: var(--copper); border-color: var(--copper); }
 .case-category-rail .category-tabs button.active span { color: var(--charcoal); }
 .case-category-rail .category-tabs button svg { opacity: 0.45; transition: transform 0.2s ease-out; }
-.case-category-rail .category-tabs button:hover svg,
+@media (hover: hover) and (pointer: fine) {
+  .case-category-rail .category-tabs button:hover svg { opacity: 1; transform: translate(2px, -2px); }
+}
 .case-category-rail .category-tabs button.active svg { opacity: 1; transform: translate(2px, -2px); }
 
 .rail-line {
@@ -348,7 +362,9 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
   filter: saturate(0.78);
 }
-.project-image img:hover { transform: scale(1.021); }
+@media (hover: hover) and (pointer: fine) {
+  .project-image img:hover { transform: scale(1.021); }
+}
 .project-accent {
   position: absolute;
   bottom: 0;
@@ -395,7 +411,10 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   border-bottom: 1px solid var(--line-light);
   transition: color 0.2s, padding 0.2s;
 }
-.track-tabs button.active, .track-tabs button:hover { color: var(--charcoal); padding-left: 8px; }
+.track-tabs button.active { color: var(--charcoal); padding-left: 8px; }
+@media (hover: hover) and (pointer: fine) {
+  .track-tabs button:hover { color: var(--charcoal); padding-left: 8px; }
+}
 .track-tabs button span { font-family: var(--mono); font-size: 10px; color: var(--copper); }
 .track-tabs button svg { opacity: 0.4; }
 
@@ -497,7 +516,9 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   font-size: 9px;
 }
 .footer div { display: flex; gap: 22px; }
-.footer a:hover { color: var(--ivory); }
+@media (hover: hover) and (pointer: fine) {
+  .footer a:hover { color: var(--ivory); }
+}
 
 /* Animations */
 .reveal-up { animation: reveal-up 0.75s cubic-bezier(0.23, 1, 0.32, 1) both; }
@@ -569,13 +590,8 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   .statement-signature { display: none; }
   .section-heading { grid-template-columns: 1fr auto; gap: 20px; }
   .section-heading .section-marker { grid-column: 1 / -1; }
-  .project-card {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
+   .project-card { grid-template-columns: minmax(0, 1fr); gap: 25px; }
+
   .project-number { display: none; }
   .project-image {
     width: 100%;
@@ -606,8 +622,8 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   .contact-actions { align-items: flex-start; flex-direction: column; }
   .contact-mark { right: 4%; bottom: 3%; }
   .contact-mark svg { width: 120px; }
-  .case-study-layout { grid-template-columns: 1fr; gap: 35px; }
-  .case-category-rail { position: static; min-height: 0; }
+  .case-study-layout { grid-template-columns: minmax(0, 1fr); gap: 35px; }
+  .case-category-rail { position: static; min-height: 0; min-width: 0; }
   .case-category-rail .category-note { margin-bottom: 18px; }
   .case-category-rail .category-tabs {
     flex-direction: row;
