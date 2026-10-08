@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 /* Copper Editorial system: charcoal stage, warm ivory type, copper action color, architectural spacing. */
@@ -108,7 +107,7 @@ a { text-decoration: none; }
   font-family: var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.11em;
-  font-size: 10px;
+  font-size: 11px;
 }
 .eyebrow {
   display: flex;
@@ -195,7 +194,7 @@ h1 em, h2 em { color: var(--copper-light); font-style: normal; }
   font-family: var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.6;
   writing-mode: vertical-rl;
   display: flex;
@@ -229,7 +228,7 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   gap: 12px;
   color: var(--copper);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   line-height: 1.6;
 }
@@ -290,12 +289,12 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   color: #77736c;
   border: 1px solid transparent;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   transition: color 0.2s ease-out, border-color 0.2s ease-out, background 0.2s ease-out, transform 0.2s ease-out;
 }
-.case-category-rail .category-tabs button span { color: var(--copper); font-size: 9px; }
+.case-category-rail .category-tabs button span { color: var(--copper); font-size: 11px; }
 @media (hover: hover) and (pointer: fine) {
   .case-category-rail .category-tabs button:hover { color: var(--ivory); border-color: var(--line); transform: translateY(-2px); }
 }
@@ -381,7 +380,7 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
 .project-info h3 { font-size: clamp(34px, 4vw, 63px); letter-spacing: -0.065em; font-weight: 500; margin-bottom: 22px; }
 .project-info > p:not(.mono-label) { color: var(--smoke); font-size: 16px; line-height: 1.7; }
 .tag-row, .detail-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-.tag-row span { border: 1px solid var(--line); padding: 8px 10px; color: #b8b1a8; font-family: var(--mono); font-size: 9px; }
+.tag-row span { border: 1px solid var(--line); padding: 8px 10px; color: #b8b1a8; font-family: var(--mono); font-size: 11px; }
 .case-link { display: inline-flex; align-items: center; gap: 7px; color: var(--copper-light); font-size: 13px; margin-top: 30px; }
 
 /* Solutions */
@@ -415,7 +414,7 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
 @media (hover: hover) and (pointer: fine) {
   .track-tabs button:hover { color: var(--charcoal); padding-left: 8px; }
 }
-.track-tabs button span { font-family: var(--mono); font-size: 10px; color: var(--copper); }
+.track-tabs button span { font-family: var(--mono); font-size: 11px; color: var(--copper); }
 .track-tabs button svg { opacity: 0.4; }
 
 .track-detail { align-self: end; padding-bottom: 9px; }
@@ -453,7 +452,7 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
 .stack { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 12vw, 200px); }
 .stack-list { display: grid; grid-template-columns: 120px 1fr; align-content: start; border-top: 1px solid var(--line); }
 .stack-list p, .stack-list span { border-bottom: 1px solid var(--line); margin: 0; padding: 19px 0; }
-.stack-list p { color: var(--copper-light); font-family: var(--mono); font-size: 10px; text-transform: uppercase; }
+.stack-list p { color: var(--copper-light); font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
 .stack-list span { color: var(--smoke); font-size: 15px; }
 
 /* FAQ */
@@ -513,7 +512,7 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   flex-wrap: wrap;
   padding: 27px clamp(22px, 7vw, 112px);
   color: #77736c;
-  font-size: 9px;
+  font-size: 11px;
 }
 .footer div { display: flex; gap: 22px; }
 @media (hover: hover) and (pointer: fine) {
@@ -585,7 +584,7 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   .hero { min-height: auto; padding-top: 125px; grid-template-columns: 1fr; gap: 56px; }
   .hero-image-wrap { min-height: 360px; height: 76vw; }
   .hero-side-note { right: -25px; bottom: 40px; }
-  .hero-meta { margin-top: 56px; gap: 13px; font-size: 8px; }
+  .hero-meta { margin-top: 56px; gap: 13px; font-size: 11px; }
   .statement, .stack, .faq-grid { grid-template-columns: 1fr; gap: 50px; }
   .statement-signature { display: none; }
   .section-heading { grid-template-columns: 1fr auto; gap: 20px; }
@@ -669,14 +668,14 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   background: var(--copper);
   color: var(--charcoal);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 .price-card .mono-label { color: var(--copper-light); margin-bottom: 18px; }
 .price-card h3 { font-size: 26px; font-weight: 500; letter-spacing: -0.045em; line-height: 1.05; margin-bottom: 30px; }
 .price-line { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-.price-line small { color: var(--smoke); font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
+.price-line small { color: var(--smoke); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
 .price-line strong { font-size: clamp(32px, 3.4vw, 44px); font-weight: 500; letter-spacing: -0.06em; line-height: 1; }
 .price-time { color: var(--smoke); font-size: 13px; margin: 12px 0 26px; padding-bottom: 26px; border-bottom: 1px solid var(--line); }
 .price-features { list-style: none; margin: 0 0 34px; padding: 0; display: grid; gap: 13px; flex: 1; align-content: start; }
@@ -687,7 +686,7 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
 @media (hover: hover) and (pointer: fine) {
   .price-card:not(.featured) .price-cta:hover { background: var(--copper); color: var(--charcoal); border-color: var(--copper); }
 }
-.price-note { margin: 36px 0 0; color: #77736c; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+.price-note { margin: 36px 0 0; color: #77736c; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }
 
 /* ── About ── */
 .about {
@@ -705,7 +704,7 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
 .about-stats { display: flex; gap: clamp(24px, 4vw, 56px); margin-top: 44px; padding-top: 30px; border-top: 1px solid var(--line); flex-wrap: wrap; }
 .about-stats div { display: grid; gap: 8px; }
 .about-stats strong { font-size: clamp(30px, 3vw, 42px); font-weight: 500; letter-spacing: -0.06em; color: var(--copper-light); line-height: 1; }
-.about-stats span { color: #77736c; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
+.about-stats span { color: #77736c; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
 
 /* Hero buttons: keep labels on one line, wrap the row instead */
 .hero-actions { flex-wrap: wrap; row-gap: 18px; }
@@ -725,10 +724,10 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   padding: 13px 18px;
   border: 1px solid var(--line);
   color: #8a847b;
-  font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+  font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
   transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
 }
-.price-tabs button span { color: var(--copper); font-size: 9px; }
+.price-tabs button span { color: var(--copper); font-size: 11px; }
 @media (hover: hover) and (pointer: fine) {
   .price-tabs button:hover { color: var(--ivory); border-color: rgba(196, 123, 87, 0.6); transform: translateY(-2px); }
 }
@@ -745,7 +744,7 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
 .price-line .price-custom { font-size: clamp(26px, 2.6vw, 34px); letter-spacing: -0.05em; color: var(--copper-light); }
 
 .price-yearly { margin: -14px 0 22px; color: var(--smoke); font-size: 12px; }
-.price-yearly em { font-style: normal; color: var(--copper-light); font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; margin-left: 6px; }
+.price-yearly em { font-style: normal; color: var(--copper-light); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin-left: 6px; }
 .price-terms { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 10px; }
 .price-terms li { color: #a39c92; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.7; }
 .price-switch { margin-top: 24px; font-size: 14px; }
@@ -754,3 +753,58 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
 .price-features li { color: var(--smoke); }
 .price-features li.extra { color: var(--ivory); font-weight: 500; }
 .price-features li.extra svg { color: var(--copper-light); }
+
+/* ── Language toggle ── */
+.header-tools { display: flex; align-items: center; gap: 14px; }
+.lang-toggle {
+  min-width: 44px; height: 34px; padding: 0 12px;
+  border: 1px solid var(--line);
+  color: var(--ivory);
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .lang-toggle:hover { background: var(--copper); border-color: var(--copper); color: var(--charcoal); }
+}
+.lang-toggle:focus-visible { outline: 2px solid var(--copper-light); outline-offset: 2px; }
+
+/* ── Package questions ── */
+.pkg-faq { margin-top: 80px; max-width: 760px; }
+.pkg-faq .kicker { margin-bottom: 22px; }
+
+/* ── Arabic / RTL ──
+   Arabic joins letters, so letter-spacing must be 0, and Space Grotesk has no Arabic glyphs. */
+[dir="rtl"] { font-family: 'IBM Plex Sans Arabic', var(--serif); }
+[dir="rtl"] *, [dir="rtl"] *::before, [dir="rtl"] *::after { letter-spacing: 0 !important; }
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] button, [dir="rtl"] p, [dir="rtl"] span, [dir="rtl"] li, [dir="rtl"] a, [dir="rtl"] small, [dir="rtl"] strong, [dir="rtl"] em {
+  font-family: 'IBM Plex Sans Arabic', 'Space Grotesk', sans-serif;
+}
+[dir="rtl"] h1, [dir="rtl"] h2 { line-height: 1.18; }
+[dir="rtl"] .eyebrow, [dir="rtl"] .kicker, [dir="rtl"] .mono-label, [dir="rtl"] .section-marker, [dir="rtl"] .hero-caption, [dir="rtl"] .hero-meta,
+[dir="rtl"] .detail-index, [dir="rtl"] .footer, [dir="rtl"] .project-accent, [dir="rtl"] .price-terms li, [dir="rtl"] .price-tabs button { text-transform: none; font-size: 12px; }
+[dir="rtl"] .tag-row span, [dir="rtl"] .stack-list span { font-family: var(--mono); }
+[dir="rtl"] .nav-links button { font-size: 14px; }
+[dir="rtl"] .statement-copy { margin-left: 0; margin-right: clamp(0px, 10vw, 170px); }
+[dir="rtl"] .process-heading, [dir="rtl"] .process-grid, [dir="rtl"] .contact-content { margin-left: 0; margin-right: calc(116px + clamp(20px, 7vw, 108px)); }
+[dir="rtl"] .process-step { border-right: 0; border-left: 1px solid var(--line); margin-right: 0; margin-left: 24px; padding: 23px 0 0 24px; }
+[dir="rtl"] .process-step + .process-step { padding-left: 24px; padding-right: 24px; }
+[dir="rtl"] .hero-side-note { right: auto; left: -41px; }
+[dir="rtl"] .contact-mark { right: auto; left: 8%; }
+[dir="rtl"] .price-flag { right: auto; left: 28px; }
+[dir="rtl"] .project-accent { left: auto; right: 0; }
+[dir="rtl"] .track-tabs button { text-align: right; }
+[dir="rtl"] .track-tabs button.active, [dir="rtl"] .track-tabs button:hover { padding-left: 0; padding-right: 8px; }
+[dir="rtl"] .case-category-rail .category-tabs button { text-align: right; }
+[dir="rtl"] .text-link svg, [dir="rtl"] .case-link svg, [dir="rtl"] .button svg, [dir="rtl"] .nav-cta svg, [dir="rtl"] .contact-email svg, [dir="rtl"] .circle-link svg { transform: scaleX(-1); }
+@media (hover: hover) and (pointer: fine) {
+  [dir="rtl"] .text-link:hover svg, [dir="rtl"] .case-link:hover svg { transform: scaleX(-1) translate(3px, -3px); }
+}
+@media (max-width: 800px) {
+  [dir="rtl"] .process-heading, [dir="rtl"] .process-grid, [dir="rtl"] .contact-content { margin-right: 0; }
+  [dir="rtl"] .hero-side-note { left: -25px; }
+  [dir="rtl"] .contact-mark { left: 4%; }
+}
+/* Arabic category names are longer: give the rail more room so they stay on one line */
+[dir="rtl"] .case-study-layout { grid-template-columns: 200px minmax(0, 1fr); }
+[dir="rtl"] .case-category-rail .category-tabs button { font-size: 13px; }
+@media (max-width: 800px) { [dir="rtl"] .case-study-layout { grid-template-columns: minmax(0, 1fr); } }
