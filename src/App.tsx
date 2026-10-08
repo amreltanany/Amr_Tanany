@@ -116,8 +116,48 @@ const tracks = [
   }, 
 ];
 
+// DRAFT pricing: edit names, EGP prices, timelines and features here. Everything on the page is rendered from this array.
+const packages = [
+  {
+    name: "Starter", tagline: "One page that sells.", from: false, price: 6000, time: "5–7 days", featured: false,
+    features: [
+      "1-page responsive website",
+      "Custom design, no templates",
+      "WhatsApp & contact buttons",
+      "Basic SEO and fast loading",
+      "1 round of revisions",
+    ],
+  },
+  {
+    name: "Business", tagline: "A full, credible website.", from: false, price: 15000, time: "2–3 weeks", featured: true,
+    features: [
+      "Up to 6 custom pages",
+      "UI design with smooth motion",
+      "Contact forms & lead capture",
+      "On-page SEO and speed tuning",
+      "2 rounds of revisions",
+      "30 days of support",
+    ],
+  },
+  {
+    name: "Platform", tagline: "Store or custom system.", from: true, price: 35000, time: "4–8 weeks", featured: false,
+    features: [
+      "E-commerce, booking or management system",
+      "Payment gateway integration",
+      "Admin dashboard",
+      "Backend, database and APIs",
+      "Handoff and training",
+      "60 days of support",
+    ],
+  },
+];
+
+const whatsappLink = (pkg: string) =>
+  `https://wa.me/201119708154?text=${encodeURIComponent(`Hi Amr, I'm interested in the ${pkg} package.`)}`;
+
 const faqItems: [string, string][] = [
-  ["What kind of projects do you take on?", "I work with clinics, real-estate teams, and growing businesses that need a sharper website, a better customer journey, or a focused digital system."],
+  ["What kind of projects do you take on?", "I work with clinics, construction firms, online stores, and growing businesses that need a sharper website, a better customer journey, or a focused digital system."],
+  ["How much does a website cost?", "Packages start at EGP 6,000 for a landing page. The exact price depends on pages, features, and timeline, and I confirm it after a short intro call."],
   ["Do you handle design and development?", "Yes. I can take a project from the first content direction and wireframe through visual design, development, launch, and performance refinement."],
   ["Can you work with an existing brand?", "Absolutely. I can preserve what already works, clarify the visual language, and build a web experience that feels unmistakably yours."],
   ["How do we start?", "Send a short brief through WhatsApp or email. We will use a focused 20-minute call to understand the goal, audience, and best first step."],
@@ -146,13 +186,14 @@ export default function App() {
   const [activeTrack, setActiveTrack] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  useEffect(() => {
-    projects.forEach((project) => {
+  // Warm only the hovered category's images, instead of downloading all of them (~4MB) on first load.
+  const preloadCategory = (category: string) => {
+    projects.filter((p) => p.category === category).forEach((project) => {
       const img = new Image();
       img.decoding = "async";
       img.src = project.image;
     });
-  }, []);
+  };
 
   const selectCategory = (category: string) => {
     if (category === activeCategory || phase !== "idle") return;
@@ -183,6 +224,8 @@ export default function App() {
           <span>AMR<span className="wordmark-dot">.</span></span>
         </button>
         <nav className={menuOpen ? "nav-links is-open" : "nav-links"} aria-label="Main navigation">
+          <button onClick={() => scrollTo("pricing")}>Pricing</button>
+          <button onClick={() => scrollTo("about")}>About</button>
           <button onClick={() => scrollTo("work")}>Work</button>
           <button onClick={() => scrollTo("solutions")}>Solutions</button>
           <button onClick={() => scrollTo("process")}>Process</button>
@@ -231,9 +274,43 @@ export default function App() {
         </div>
       </section>
 
+      {/* Packages & pricing */}
+      <section id="pricing" className="pricing section-pad">
+        <div className="pricing-head">
+          <div className="section-marker"><span>01</span><span>Packages</span></div>
+          <div>
+            <p className="kicker">Clear scope, clear price</p>
+            <h2>Pick a package.<br /><em>Know the cost.</em></h2>
+          </div>
+        </div>
+        <div className="price-grid">
+          {packages.map((pkg) => (
+            <article className={`price-card${pkg.featured ? " featured" : ""}`} key={pkg.name}>
+              {pkg.featured && <span className="price-flag">Most chosen</span>}
+              <p className="mono-label">{pkg.name}</p>
+              <h3>{pkg.tagline}</h3>
+              <div className="price-line">
+                {pkg.from && <small>From</small>}
+                <strong>EGP {pkg.price.toLocaleString("en-US")}</strong>
+              </div>
+              <p className="price-time">Delivery in {pkg.time}</p>
+              <ul className="price-features">
+                {pkg.features.map((feature) => (
+                  <li key={feature}><Check size={14} />{feature}</li>
+                ))}
+              </ul>
+              <a className="button button-copper price-cta" href={whatsappLink(pkg.name)} target="_blank" rel="noreferrer">
+                Choose {pkg.name} <ArrowUpRight size={16} />
+              </a>
+            </article>
+          ))}
+        </div>
+        <p className="price-note">Prices are in Egyptian pounds. The final quote is confirmed after a 20-minute call.</p>
+      </section>
+
       {/* Statement */}
       <section className="statement section-pad">
-        <div className="section-marker"><span>00</span><span>Point of view</span></div>
+        <div className="section-marker"><span>02</span><span>Point of view</span></div>
         <div className="statement-content">
           <p className="kicker">A better website is not decoration.</p>
           <h2>It is your next<br /><span>sales conversation.</span></h2>
@@ -249,10 +326,33 @@ export default function App() {
         </div>
       </section>
 
+      {/* About */}
+      <section id="about" className="about section-pad">
+        <div className="section-marker"><span>03</span><span>About</span></div>
+        <div className="about-portrait">
+          <img src={`${import.meta.env.BASE_URL}imports/amr.jpeg`} alt="Portrait of Amr ElTanany" loading="lazy" decoding="async" />
+        </div>
+        <div className="about-copy">
+          <p className="kicker">The person behind the work</p>
+          <h2>Hi, I'm Amr.<br /><em>I build it end to end.</em></h2>
+          <p>
+            I'm a web designer and full-stack developer based in Egypt. I build websites and digital systems for clinics, construction firms, online stores, and growing businesses, from the first wireframe to launch day.
+          </p>
+          <p>
+            You work with me directly, so there are no handoffs and no surprises: one person who designs it, builds it, and stands behind it.
+          </p>
+          <div className="about-stats">
+            <div><strong>{projects.length}</strong><span>Projects delivered</span></div>
+            <div><strong>{categories.length}</strong><span>Industries</span></div>
+            <div><strong>20 min</strong><span>Free intro call</span></div>
+          </div>
+        </div>
+      </section>
+
       {/* Work */}
       <section id="work" className="work-section section-pad">
         <div className="section-heading">
-          <div className="section-marker"><span>01</span><span>Selected work</span></div>
+          <div className="section-marker"><span>04</span><span>Selected work</span></div>
           <div>
             <p className="kicker">Built for the real world</p>
             <h2>Case studies<br /><em>with intent.</em></h2>
@@ -270,6 +370,8 @@ export default function App() {
                   key={category}
                   className={activeCategory === category ? "active" : ""}
                   onClick={() => selectCategory(category)}
+                  onPointerEnter={() => preloadCategory(category)}
+                  onFocus={() => preloadCategory(category)}
                   role="tab"
                   aria-selected={activeCategory === category}
                 >
@@ -327,7 +429,7 @@ export default function App() {
 
       {/* Solutions */}
       <section id="solutions" className="solutions section-pad">
-        <div className="section-marker"><span>02</span><span>What I build</span></div>
+        <div className="section-marker"><span>05</span><span>What I build</span></div>
         <div className="solutions-grid">
           <div>
             <p className="kicker">Choose your lane</p>
@@ -363,7 +465,7 @@ export default function App() {
 
       {/* Process */}
       <section id="process" className="process section-pad">
-        <div className="section-marker" style={{ marginBottom: 0 }}><span>03</span><span>How it works</span></div>
+        <div className="section-marker" style={{ marginBottom: 0 }}><span>06</span><span>How it works</span></div>
         <div className="process-heading">
           <p className="kicker">From first brief to launch day</p>
           <h2>A clear process<br /><em>keeps things moving.</em></h2>
@@ -383,7 +485,7 @@ export default function App() {
       {/* Stack */}
       <section className="stack section-pad">
         <div className="stack-intro">
-          <div className="section-marker"><span>04</span><span>The toolkit</span></div>
+          <div className="section-marker"><span>07</span><span>The toolkit</span></div>
           <h2>Built to feel good<br /><em>and hold up.</em></h2>
         </div>
         <div className="stack-list">
@@ -396,7 +498,7 @@ export default function App() {
 
       {/* FAQ */}
       <section className="faq section-pad">
-        <div className="section-marker"><span>05</span><span>Good to know</span></div>
+        <div className="section-marker"><span>08</span><span>Good to know</span></div>
         <div className="faq-grid">
           <div>
             <p className="kicker">The short version</p>
@@ -423,7 +525,7 @@ export default function App() {
         <div className="contact-mark">
           <AMRMark style={{ width: 180, height: 180, color: "#11110f", opacity: 0.15 }} />
         </div>
-        <div className="section-marker"><span>06</span><span>Let's make it clear</span></div>
+        <div className="section-marker"><span>09</span><span>Let's make it clear</span></div>
         <div className="contact-content">
           <p className="kicker">Have a project in mind?</p>
           <h2>Bring the brief.<br /><em>Leave with a direction.</em></h2>
