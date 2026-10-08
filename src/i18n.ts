@@ -12,7 +12,7 @@ const pay = {
 const en = {
   nav: { pricing: "Pricing", about: "About", work: "Work", solutions: "Solutions", process: "Process", start: "Start a project", toggle: "العربية", toggleLabel: "Switch to Arabic", back: "Back to top", menu: "Toggle navigation", mainNav: "Main navigation" },
   hero: {
-    eyebrow: "Available for selected projects", h1a: "Digital work", h1b: "with a reason.",
+    eyebrow: "Websites from EGP 500 / month", h1a: "Digital work", h1b: "with a reason.",
     intro: "I design and build websites and digital systems that help ambitious businesses look credible, move faster, and win the next conversation.",
     cta1: "View case studies", cta2: "Start a project",
     meta: ["Based in Egypt", "Working worldwide", "© 2026"],
@@ -136,7 +136,7 @@ const en = {
 const ar: typeof en = {
   nav: { pricing: "الأسعار", about: "نبذة", work: "الأعمال", solutions: "الحلول", process: "المراحل", start: "ابدأ مشروعك", toggle: "EN", toggleLabel: "التبديل إلى الإنجليزية", back: "العودة للأعلى", menu: "تبديل القائمة", mainNav: "القائمة الرئيسية" },
   hero: {
-    eyebrow: "متاح لمشاريع مختارة", h1a: "أعمال رقمية", h1b: "لها هدف.",
+    eyebrow: "مواقع تبدأ من 500 ج.م شهرياً", h1a: "أعمال رقمية", h1b: "لها هدف.",
     intro: "أصمّم وأبني مواقع وأنظمة رقمية تساعد الشركات الطموحة على أن تبدو موثوقة، وتتحرك أسرع، وتكسب المحادثة القادمة.",
     cta1: "شاهد دراسات الحالة", cta2: "ابدأ مشروعك",
     meta: ["مقيم في مصر", "أعمل مع العالم", "© 2026"],
