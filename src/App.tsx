@@ -145,15 +145,13 @@ const packageTypes: { id: string; label: string; note: string; packages: Pkg[] }
     ],
   },
   {
-    id: "management", label: "Project management",
-    note: "I run your website or digital project month after month.",
+    id: "management", label: "Website management",
+    note: "I manage, maintain and secure your website month after month.",
     packages: [
-      { name: "Maintain", tagline: "Keep it healthy.", price: 2500, unit: "/ month", time: "Monthly",
-        features: ["Updates and backups", "Uptime and security checks", "Bug fixes", "Monthly report"] },
-      { name: "Grow", tagline: "Keep it improving.", price: 6000, unit: "/ month", time: "Monthly", featured: true,
-        features: ["Everything in Maintain", "New pages and features", "SEO and speed improvements", "Analytics review", "Priority support"] },
-      { name: "Full management", tagline: "Your digital project, handled.", price: 12000, unit: "/ month", from: true, time: "Monthly",
-        features: ["Everything in Grow", "Product roadmap and planning", "Weekly progress calls", "Content and campaign support", "Dedicated point of contact"] },
+      { name: "Standard Management", tagline: "Keep it running.", price: 1500, unit: "/ month", time: "Monthly",
+        features: ["Website management and routine maintenance", "Up to 10 design or content update requests per month", "Technical support and bug fixing", "Monthly summary of work and site health"] },
+      { name: "Full Management + Hosting", tagline: "Hosting included.", price: 2000, unit: "/ month", time: "Monthly",
+        features: ["Everything in Standard, plus:", "Hosting and server management", "Automated backups and security updates", "Uptime monitoring with alerts"] },
     ],
   },
 ];
@@ -306,7 +304,7 @@ export default function App() {
           ))}
         </div>
         <p className="price-type-note">{currentType.note}</p>
-        <div className="price-grid" key={currentType.id}>
+        <div className="price-grid" key={currentType.id} style={{ ["--cols" as string]: currentType.packages.length }}>
           {currentType.packages.map((pkg) => (
             <article className={`price-card${pkg.featured ? " featured" : ""}`} key={pkg.name}>
               {pkg.featured && <span className="price-flag">Most chosen</span>}
