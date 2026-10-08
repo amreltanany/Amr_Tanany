@@ -116,44 +116,51 @@ const tracks = [
   }, 
 ];
 
-// DRAFT pricing: edit names, EGP prices, timelines and features here. Everything on the page is rendered from this array.
-const packages = [
+// DRAFT pricing: 3 package types, each with its own packages. Edit names, EGP prices, units and features here;
+// the whole section renders from this array.
+type Pkg = { name: string; tagline: string; price: number; unit?: string; from?: boolean; time: string; featured?: boolean; features: string[] };
+const packageTypes: { id: string; label: string; note: string; packages: Pkg[] }[] = [
   {
-    name: "Starter", tagline: "One page that sells.", from: false, price: 6000, time: "5–7 days", featured: false,
-    features: [
-      "1-page responsive website",
-      "Custom design, no templates",
-      "WhatsApp & contact buttons",
-      "Basic SEO and fast loading",
-      "1 round of revisions",
+    id: "rental", label: "Rental",
+    note: "A ready, maintained website you rent monthly. No big upfront cost.",
+    packages: [
+      { name: "Rental Lite", tagline: "A simple site, rented.", price: 800, unit: "/ month", time: "Live in 3–5 days",
+        features: ["1-page website", "Hosting and domain handled", "Content updates on request", "Basic SEO"] },
+      { name: "Rental Plus", tagline: "More pages, more reach.", price: 1500, unit: "/ month", time: "Live in 1 week", featured: true,
+        features: ["Up to 5 pages", "Hosting, domain and SSL handled", "Monthly content updates", "On-page SEO", "WhatsApp & forms"] },
+      { name: "Rental Pro", tagline: "Everything handled for you.", price: 3000, unit: "/ month", time: "Live in 2 weeks",
+        features: ["Up to 10 pages", "Priority support", "Unlimited small edits", "SEO and speed monitoring", "Monthly report"] },
     ],
   },
   {
-    name: "Business", tagline: "A full, credible website.", from: false, price: 15000, time: "2–3 weeks", featured: true,
-    features: [
-      "Up to 6 custom pages",
-      "UI design with smooth motion",
-      "Contact forms & lead capture",
-      "On-page SEO and speed tuning",
-      "2 rounds of revisions",
-      "30 days of support",
+    id: "sale", label: "One-time purchase",
+    note: "You pay once and own the website and its code.",
+    packages: [
+      { name: "Starter", tagline: "One page that sells.", price: 6000, time: "5–7 days",
+        features: ["1-page responsive website", "Custom design, no templates", "WhatsApp & contact buttons", "Basic SEO and fast loading", "1 round of revisions"] },
+      { name: "Business", tagline: "A full, credible website.", price: 15000, time: "2–3 weeks", featured: true,
+        features: ["Up to 6 custom pages", "UI design with smooth motion", "Contact forms & lead capture", "On-page SEO and speed tuning", "2 rounds of revisions", "30 days of support"] },
+      { name: "Platform", tagline: "Store or custom system.", price: 35000, from: true, time: "4–8 weeks",
+        features: ["E-commerce, booking or management system", "Payment gateway integration", "Admin dashboard", "Backend, database and APIs", "Handoff and training", "60 days of support"] },
     ],
   },
   {
-    name: "Platform", tagline: "Store or custom system.", from: true, price: 35000, time: "4–8 weeks", featured: false,
-    features: [
-      "E-commerce, booking or management system",
-      "Payment gateway integration",
-      "Admin dashboard",
-      "Backend, database and APIs",
-      "Handoff and training",
-      "60 days of support",
+    id: "management", label: "Project management",
+    note: "I run your website or digital project month after month.",
+    packages: [
+      { name: "Maintain", tagline: "Keep it healthy.", price: 2500, unit: "/ month", time: "Monthly",
+        features: ["Updates and backups", "Uptime and security checks", "Bug fixes", "Monthly report"] },
+      { name: "Grow", tagline: "Keep it improving.", price: 6000, unit: "/ month", time: "Monthly", featured: true,
+        features: ["Everything in Maintain", "New pages and features", "SEO and speed improvements", "Analytics review", "Priority support"] },
+      { name: "Full management", tagline: "Your digital project, handled.", price: 12000, unit: "/ month", from: true, time: "Monthly",
+        features: ["Everything in Grow", "Product roadmap and planning", "Weekly progress calls", "Content and campaign support", "Dedicated point of contact"] },
     ],
   },
 ];
 
-const whatsappLink = (pkg: string) =>
-  `https://wa.me/201119708154?text=${encodeURIComponent(`Hi Amr, I'm interested in the ${pkg} package.`)}`;
+const whatsappLink = (text: string) => `https://wa.me/201119708154?text=${encodeURIComponent(text)}`;
+const packageLink = (pkg: string, type: string) => whatsappLink(`Hi Amr, I'm interested in the ${pkg} package (${type}).`);
+const proposalLink = whatsappLink("Hi Amr, I'd like a website proposal for my project. Here is a short brief:");
 
 const faqItems: [string, string][] = [
   ["What kind of projects do you take on?", "I work with clinics, construction firms, online stores, and growing businesses that need a sharper website, a better customer journey, or a focused digital system."],
@@ -184,6 +191,8 @@ export default function App() {
   const [displayedCategory, setDisplayedCategory] = useState("Healthcare");
   const [phase, setPhase] = useState<"idle" | "leaving" | "entering">("idle");
   const [activeTrack, setActiveTrack] = useState(0);
+  const [activeType, setActiveType] = useState(packageTypes[1].id); // opens on one-time purchase
+  const currentType = packageTypes.find((t) => t.id === activeType) ?? packageTypes[0];
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Warm only the hovered category's images, instead of downloading all of them (~4MB) on first load.
@@ -283,8 +292,22 @@ export default function App() {
             <h2>Pick a package.<br /><em>Know the cost.</em></h2>
           </div>
         </div>
-        <div className="price-grid">
-          {packages.map((pkg) => (
+        <div className="price-tabs" role="tablist" aria-label="Package types">
+          {packageTypes.map((type, index) => (
+            <button
+              key={type.id}
+              role="tab"
+              aria-selected={activeType === type.id}
+              className={activeType === type.id ? "active" : ""}
+              onClick={() => setActiveType(type.id)}
+            >
+              <span>0{index + 1}</span>{type.label}
+            </button>
+          ))}
+        </div>
+        <p className="price-type-note">{currentType.note}</p>
+        <div className="price-grid" key={currentType.id}>
+          {currentType.packages.map((pkg) => (
             <article className={`price-card${pkg.featured ? " featured" : ""}`} key={pkg.name}>
               {pkg.featured && <span className="price-flag">Most chosen</span>}
               <p className="mono-label">{pkg.name}</p>
@@ -292,14 +315,15 @@ export default function App() {
               <div className="price-line">
                 {pkg.from && <small>From</small>}
                 <strong>EGP {pkg.price.toLocaleString("en-US")}</strong>
+                {pkg.unit && <small>{pkg.unit}</small>}
               </div>
-              <p className="price-time">Delivery in {pkg.time}</p>
+              <p className="price-time">{pkg.unit ? pkg.time : `Delivery in ${pkg.time}`}</p>
               <ul className="price-features">
                 {pkg.features.map((feature) => (
                   <li key={feature}><Check size={14} />{feature}</li>
                 ))}
               </ul>
-              <a className="button button-copper price-cta" href={whatsappLink(pkg.name)} target="_blank" rel="noreferrer">
+              <a className="button button-copper price-cta" href={packageLink(pkg.name, currentType.label)} target="_blank" rel="noreferrer">
                 Choose {pkg.name} <ArrowUpRight size={16} />
               </a>
             </article>
@@ -536,7 +560,7 @@ export default function App() {
             <a className="button button-copper" href="https://wa.me/201119708154" target="_blank" rel="noreferrer">
               Book a 20-minute call <ArrowUpRight size={17} />
             </a>
-            <a className="text-link" href="mailto:amr_eltanany@outlook.com">
+            <a className="text-link" href={proposalLink} target="_blank" rel="noreferrer">
               Request a website proposal <ArrowUpRight size={16} />
             </a>
           </div>

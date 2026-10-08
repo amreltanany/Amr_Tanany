@@ -717,3 +717,23 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
   .about-portrait { max-width: 360px; }
   .pricing-head { grid-template-columns: 1fr; gap: 20px; margin-bottom: 50px; }
 }
+
+/* Package type tabs */
+.price-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.price-tabs button {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 18px;
+  border: 1px solid var(--line);
+  color: #8a847b;
+  font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+  transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.price-tabs button span { color: var(--copper); font-size: 9px; }
+@media (hover: hover) and (pointer: fine) {
+  .price-tabs button:hover { color: var(--ivory); border-color: rgba(196, 123, 87, 0.6); transform: translateY(-2px); }
+}
+.price-tabs button.active { background: var(--copper); border-color: var(--copper); color: var(--charcoal); }
+.price-tabs button.active span { color: var(--charcoal); }
+.price-tabs button:focus-visible { outline: 2px solid var(--copper-light); outline-offset: 2px; }
+.price-type-note { color: var(--smoke); font-size: 15px; margin: 0 0 40px; max-width: 520px; line-height: 1.6; }
+.price-grid { animation: reveal-up 0.5s cubic-bezier(0.23, 1, 0.32, 1) both; }
