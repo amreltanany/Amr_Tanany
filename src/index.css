@@ -749,3 +749,8 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
 .price-terms { list-style: none; margin: 36px 0 0; padding: 0; display: grid; gap: 8px; }
 .price-terms li { color: #8a847b; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.6; }
 .price-switch { margin-top: 20px; }
+
+/* Features marked "+" are the ones this package adds on top of the previous one */
+.price-features li { color: var(--smoke); }
+.price-features li.extra { color: var(--ivory); font-weight: 500; }
+.price-features li.extra svg { color: var(--copper-light); }

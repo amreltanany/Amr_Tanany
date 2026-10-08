@@ -129,7 +129,7 @@ const packageTypes: { id: string; label: string; note: string; terms: string[]; 
       { name: "Portfolio", tagline: "Your work, online.", price: 500, unit: "/ month", time: "Monthly",
         features: ["Custom design", "Hosting included (monthly)", "24/7 support", "SSL security", "Backup", "Responsive design"] },
       { name: "E-commerce", tagline: "Your store, online.", price: 1000, unit: "/ month", time: "Monthly", featured: true,
-        features: ["Everything in Portfolio, plus:", "Domain", "Admin dashboard"] },
+        features: ["Custom design", "Hosting included (monthly)", "24/7 support", "SSL security", "Backup", "Responsive design", "+Domain", "+Admin dashboard"] },
     ],
   },
   {
@@ -141,9 +141,9 @@ const packageTypes: { id: string; label: string; note: string; terms: string[]; 
       { name: "Portfolio", tagline: "Your work, online.", price: 3000, time: "One-time payment",
         features: ["Professional design", "1 year of hosting", "Domain", "Technical support", "SSL security"] },
       { name: "E-commerce", tagline: "Your store, online.", price: 6000, time: "One-time payment", featured: true,
-        features: ["Everything in Portfolio, plus:", "Admin dashboard", "Backup"] },
+        features: ["Professional design", "1 year of hosting", "Domain", "Technical support", "SSL security", "+Admin dashboard", "+Backup"] },
       { name: "Bespoke", tagline: "Built around your business.", time: "Scoped after a short call", custom: true,
-        features: ["Everything in E-commerce, plus:", "Custom features and integrations", "Backend, database and APIs", "Booking, management or custom systems", "Priced after we define the project"] },
+        features: ["Professional design", "1 year of hosting", "Domain", "Technical support", "SSL security", "Admin dashboard", "Backup", "+Custom features and integrations", "+Backend, database and APIs", "+Booking, management or custom systems"] },
     ],
   },
   {
@@ -154,7 +154,7 @@ const packageTypes: { id: string; label: string; note: string; terms: string[]; 
       { name: "Standard Management", tagline: "Keep it running.", price: 1500, unit: "/ month", time: "Monthly",
         features: ["Website management and routine maintenance", "Up to 10 design or content update requests per month", "Technical support and bug fixing", "Monthly summary of work and site health"] },
       { name: "Full Management + Hosting", tagline: "Hosting included.", price: 2000, unit: "/ month", time: "Monthly",
-        features: ["Everything in Standard, plus:", "Hosting and server management", "Automated backups and security updates", "Uptime monitoring with alerts"] },
+        features: ["Website management and routine maintenance", "Up to 10 design or content update requests per month", "Technical support and bug fixing", "Monthly summary of work and site health", "+Hosting and server management", "+Automated backups and security updates", "+Uptime monitoring with alerts"] },
     ],
   },
 ];
@@ -323,9 +323,10 @@ export default function App() {
                 <p className="price-yearly">Pay yearly: EGP {(pkg.price * 10).toLocaleString("en-US")} <em>2 months free</em></p>
               )}
               <ul className="price-features">
-                {pkg.features.map((feature) => (
-                  <li key={feature}><Check size={14} />{feature}</li>
-                ))}
+                {pkg.features.map((feature) => {
+                  const extra = feature.startsWith("+");
+                  return <li key={feature} className={extra ? "extra" : undefined}><Check size={14} />{extra ? feature.slice(1) : feature}</li>;
+                })}
               </ul>
               <a className="button button-copper price-cta" href={packageLink(pkg.name, currentType.label)} target="_blank" rel="noreferrer">
                 {pkg.custom ? "Get a quote" : `Choose ${pkg.name}`} <ArrowUpRight size={16} />
