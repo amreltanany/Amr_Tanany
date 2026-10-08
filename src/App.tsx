@@ -121,15 +121,13 @@ const tracks = [
 type Pkg = { name: string; tagline: string; price: number; unit?: string; from?: boolean; time: string; featured?: boolean; features: string[] };
 const packageTypes: { id: string; label: string; note: string; packages: Pkg[] }[] = [
   {
-    id: "rental", label: "Rental",
-    note: "A ready, maintained website you rent monthly. No big upfront cost.",
+    id: "rental", label: "For rent",
+    note: "Rent a ready, fully managed website. You pay monthly and skip the big upfront cost.",
     packages: [
-      { name: "Rental Lite", tagline: "A simple site, rented.", price: 800, unit: "/ month", time: "Live in 3–5 days",
-        features: ["1-page website", "Hosting and domain handled", "Content updates on request", "Basic SEO"] },
-      { name: "Rental Plus", tagline: "More pages, more reach.", price: 1500, unit: "/ month", time: "Live in 1 week", featured: true,
-        features: ["Up to 5 pages", "Hosting, domain and SSL handled", "Monthly content updates", "On-page SEO", "WhatsApp & forms"] },
-      { name: "Rental Pro", tagline: "Everything handled for you.", price: 3000, unit: "/ month", time: "Live in 2 weeks",
-        features: ["Up to 10 pages", "Priority support", "Unlimited small edits", "SEO and speed monitoring", "Monthly report"] },
+      { name: "Portfolio", tagline: "Your work, online.", price: 500, unit: "/ month", time: "Monthly",
+        features: ["Custom design", "Hosting included (monthly)", "24/7 support", "SSL security", "Backup", "Responsive design"] },
+      { name: "E-commerce", tagline: "Your store, online.", price: 1000, unit: "/ month", time: "Monthly",
+        features: ["Everything in Portfolio, plus:", "Domain", "Admin dashboard"] },
     ],
   },
   {
