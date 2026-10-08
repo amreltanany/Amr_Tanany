@@ -118,7 +118,7 @@ const tracks = [
 
 // DRAFT pricing: 3 package types, each with its own packages. Edit names, EGP prices, units and features here;
 // the whole section renders from this array.
-type Pkg = { name: string; tagline: string; price: number; unit?: string; from?: boolean; time: string; featured?: boolean; features: string[] };
+type Pkg = { name: string; tagline: string; price?: number; custom?: boolean; unit?: string; from?: boolean; time: string; featured?: boolean; features: string[] };
 const packageTypes: { id: string; label: string; note: string; packages: Pkg[] }[] = [
   {
     id: "rental", label: "For rent",
@@ -134,12 +134,12 @@ const packageTypes: { id: string; label: string; note: string; packages: Pkg[] }
     id: "sale", label: "One-time purchase",
     note: "You pay once and own the website and its code.",
     packages: [
-      { name: "Starter", tagline: "One page that sells.", price: 6000, time: "5–7 days",
-        features: ["1-page responsive website", "Custom design, no templates", "WhatsApp & contact buttons", "Basic SEO and fast loading", "1 round of revisions"] },
-      { name: "Business", tagline: "A full, credible website.", price: 15000, time: "2–3 weeks", featured: true,
-        features: ["Up to 6 custom pages", "UI design with smooth motion", "Contact forms & lead capture", "On-page SEO and speed tuning", "2 rounds of revisions", "30 days of support"] },
-      { name: "Platform", tagline: "Store or custom system.", price: 35000, from: true, time: "4–8 weeks",
-        features: ["E-commerce, booking or management system", "Payment gateway integration", "Admin dashboard", "Backend, database and APIs", "Handoff and training", "60 days of support"] },
+      { name: "Portfolio", tagline: "Your work, online.", price: 3000, time: "One-time payment",
+        features: ["Professional design", "1 year of hosting", "Domain", "Technical support", "SSL security"] },
+      { name: "E-commerce", tagline: "Your store, online.", price: 6000, time: "One-time payment",
+        features: ["Everything in Portfolio, plus:", "Admin dashboard", "Backup"] },
+      { name: "Bespoke", tagline: "Built around your business.", time: "Scoped after a short call", custom: true,
+        features: ["Everything in E-commerce, plus:", "Custom features and integrations", "Backend, database and APIs", "Booking, management or custom systems", "Priced after we define the project"] },
     ],
   },
   {
@@ -310,17 +310,17 @@ export default function App() {
               <h3>{pkg.tagline}</h3>
               <div className="price-line">
                 {pkg.from && <small>From</small>}
-                <strong>EGP {pkg.price.toLocaleString("en-US")}</strong>
+                {pkg.price !== undefined ? <strong>EGP {pkg.price.toLocaleString("en-US")}</strong> : <strong className="price-custom">Custom quote</strong>}
                 {pkg.unit && <small>{pkg.unit}</small>}
               </div>
-              <p className="price-time">{pkg.unit ? pkg.time : `Delivery in ${pkg.time}`}</p>
+              <p className="price-time">{pkg.time}</p>
               <ul className="price-features">
                 {pkg.features.map((feature) => (
                   <li key={feature}><Check size={14} />{feature}</li>
                 ))}
               </ul>
               <a className="button button-copper price-cta" href={packageLink(pkg.name, currentType.label)} target="_blank" rel="noreferrer">
-                Choose {pkg.name} <ArrowUpRight size={16} />
+                {pkg.custom ? "Get a quote" : `Choose ${pkg.name}`} <ArrowUpRight size={16} />
               </a>
             </article>
           ))}
