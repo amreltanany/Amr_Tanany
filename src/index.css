@@ -746,9 +746,9 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
 
 .price-yearly { margin: -14px 0 22px; color: var(--smoke); font-size: 12px; }
 .price-yearly em { font-style: normal; color: var(--copper-light); font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; margin-left: 6px; }
-.price-terms { list-style: none; margin: 36px 0 0; padding: 0; display: grid; gap: 8px; }
-.price-terms li { color: #8a847b; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.6; }
-.price-switch { margin-top: 20px; }
+.price-terms { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 10px; }
+.price-terms li { color: #a39c92; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.7; }
+.price-switch { margin-top: 24px; font-size: 14px; }
 
 /* Features marked "+" are the ones this package adds on top of the previous one */
 .price-features li { color: var(--smoke); }
