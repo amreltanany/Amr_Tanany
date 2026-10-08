@@ -119,24 +119,28 @@ const tracks = [
 // DRAFT pricing: 3 package types, each with its own packages. Edit names, EGP prices, units and features here;
 // the whole section renders from this array.
 type Pkg = { name: string; tagline: string; price?: number; custom?: boolean; unit?: string; from?: boolean; time: string; featured?: boolean; features: string[] };
-const packageTypes: { id: string; label: string; note: string; packages: Pkg[] }[] = [
+const PAY_TERMS = "Payment is made after the design is delivered to you. No deposits or installments.";
+const packageTypes: { id: string; label: string; note: string; terms: string[]; link?: { text: string; to: string }; packages: Pkg[] }[] = [
   {
     id: "rental", label: "For rent",
     note: "Rent a ready, fully managed website. You pay monthly and skip the big upfront cost.",
+    terms: ["Minimum commitment: 1 month. No setup fee.", PAY_TERMS],
     packages: [
       { name: "Portfolio", tagline: "Your work, online.", price: 500, unit: "/ month", time: "Monthly",
         features: ["Custom design", "Hosting included (monthly)", "24/7 support", "SSL security", "Backup", "Responsive design"] },
-      { name: "E-commerce", tagline: "Your store, online.", price: 1000, unit: "/ month", time: "Monthly",
+      { name: "E-commerce", tagline: "Your store, online.", price: 1000, unit: "/ month", time: "Monthly", featured: true,
         features: ["Everything in Portfolio, plus:", "Domain", "Admin dashboard"] },
     ],
   },
   {
     id: "sale", label: "One-time purchase",
     note: "You pay once and own the website and its code.",
+    terms: [PAY_TERMS, "Hosting is included for the first year. After that, you can continue with Website management from EGP 1,500 / month."],
+    link: { text: "See Website management", to: "management" },
     packages: [
       { name: "Portfolio", tagline: "Your work, online.", price: 3000, time: "One-time payment",
         features: ["Professional design", "1 year of hosting", "Domain", "Technical support", "SSL security"] },
-      { name: "E-commerce", tagline: "Your store, online.", price: 6000, time: "One-time payment",
+      { name: "E-commerce", tagline: "Your store, online.", price: 6000, time: "One-time payment", featured: true,
         features: ["Everything in Portfolio, plus:", "Admin dashboard", "Backup"] },
       { name: "Bespoke", tagline: "Built around your business.", time: "Scoped after a short call", custom: true,
         features: ["Everything in E-commerce, plus:", "Custom features and integrations", "Backend, database and APIs", "Booking, management or custom systems", "Priced after we define the project"] },
@@ -145,6 +149,7 @@ const packageTypes: { id: string; label: string; note: string; packages: Pkg[] }
   {
     id: "management", label: "Website management",
     note: "I manage, maintain and secure your website month after month.",
+    terms: [],
     packages: [
       { name: "Standard Management", tagline: "Keep it running.", price: 1500, unit: "/ month", time: "Monthly",
         features: ["Website management and routine maintenance", "Up to 10 design or content update requests per month", "Technical support and bug fixing", "Monthly summary of work and site health"] },
@@ -160,7 +165,7 @@ const proposalLink = whatsappLink("Hi Amr, I'd like a website proposal for my pr
 
 const faqItems: [string, string][] = [
   ["What kind of projects do you take on?", "I work with clinics, construction firms, online stores, and growing businesses that need a sharper website, a better customer journey, or a focused digital system."],
-  ["How much does a website cost?", "Packages start at EGP 6,000 for a landing page. The exact price depends on pages, features, and timeline, and I confirm it after a short intro call."],
+  ["How much does a website cost?", "You can rent a managed website from EGP 500 per month, or buy one outright from EGP 3,000. Custom projects are quoted after a short call. All prices are on this page."],
   ["Do you handle design and development?", "Yes. I can take a project from the first content direction and wireframe through visual design, development, launch, and performance refinement."],
   ["Can you work with an existing brand?", "Absolutely. I can preserve what already works, clarify the visual language, and build a web experience that feels unmistakably yours."],
   ["How do we start?", "Send a short brief through WhatsApp or email. We will use a focused 20-minute call to understand the goal, audience, and best first step."],
@@ -314,6 +319,9 @@ export default function App() {
                 {pkg.unit && <small>{pkg.unit}</small>}
               </div>
               <p className="price-time">{pkg.time}</p>
+              {pkg.unit && pkg.price !== undefined && (
+                <p className="price-yearly">Pay yearly: EGP {(pkg.price * 10).toLocaleString("en-US")} <em>2 months free</em></p>
+              )}
               <ul className="price-features">
                 {pkg.features.map((feature) => (
                   <li key={feature}><Check size={14} />{feature}</li>
@@ -325,7 +333,15 @@ export default function App() {
             </article>
           ))}
         </div>
-        <p className="price-note">Prices are in Egyptian pounds. The final quote is confirmed after a 20-minute call.</p>
+        <ul className="price-terms">
+          {currentType.terms.map((term) => <li key={term}>{term}</li>)}
+          <li>Prices are in Egyptian pounds. A custom quote is confirmed after a short call.</li>
+        </ul>
+        {currentType.link && (
+          <button className="text-link price-switch" onClick={() => setActiveType(currentType.link!.to)}>
+            {currentType.link.text} <ArrowUpRight size={15} />
+          </button>
+        )}
       </section>
 
       {/* Statement */}
