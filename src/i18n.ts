@@ -42,7 +42,7 @@ const en = {
       sale: {
         label: "One-time purchase",
         note: "You pay once and own the website and its code.",
-        terms: [pay.en, "Hosting is included for the first year. After that, you can continue with Website management from EGP 1,500 / month."],
+        terms: [pay.en, "Hosting is included for the first year. After that, you can continue with Website management from EGP 1,000 / month."],
         linkText: "See Website management",
         packages: [
           { name: "Portfolio", tagline: "Your work, online.", time: "One-time payment", features: ["Professional design", "1 year of hosting", "Domain", "Technical support", "SSL security"] },
@@ -58,13 +58,14 @@ const en = {
         packages: [
           { name: "Standard Management", tagline: "Keep it running.", time: "Monthly", features: ["Website management and routine maintenance", "Up to 10 design or content update requests per month", "Technical support and bug fixing", "Monthly summary of work and site health"] },
           { name: "Full Management + Hosting", tagline: "Hosting included.", time: "Monthly", features: ["Website management and routine maintenance", "Up to 10 design or content update requests per month", "Technical support and bug fixing", "Monthly summary of work and site health", "+Hosting and server management", "+Automated backups and security updates", "+Uptime monitoring with alerts"] },
+          { name: "Custom Management", tagline: "Built around your site.", time: "Scoped after a short call", features: ["Everything in Full Management + Hosting", "+Higher update volume and priority response", "+Custom systems, integrations and backend support", "+Tailored to your business needs"] },
         ],
       },
     },
     faq: [
       ["When do I pay?", pay.en],
       ["Is there a minimum rental period?", "The minimum is one month, with no setup fee."],
-      ["What happens after the first year of hosting?", "You can continue with Website management from EGP 1,500 / month."],
+      ["What happens after the first year of hosting?", "You can continue with Website management from EGP 1,000 / month."],
       ["What happens if I want to stop renting?", "You can pause your website for one full month, and bringing it back costs nothing. There is no reactivation fee."],
       ["Is the domain registered in my name?", "Yes. The domain is registered in your name."],
     ] as [string, string][],
@@ -77,7 +78,7 @@ const en = {
     stats: ["Projects built", "Industries", "Free intro call"], call: "20 min", alt: "Portrait of Amr ElTanany",
   },
   work: {
-    marker: "Selected work", kicker: "Built for the real world", h2a: "Case studies", h2b: "with intent.", viewAll: "View all work",
+    marker: "Selected work", kicker: "Built for the real world", h2a: "Case studies", h2b: "with intent.", viewAll: "View all work", prev: "Previous project", next: "Next project",
     browse: "Browse by practice", choose: "Choose a direction.", tabsLabel: "Case study categories", open: "Open project", openAria: (t: string) => `Open ${t}`,
     categories: { Healthcare: "Healthcare", Construction: "Construction", "E-commerce": "E-commerce", Business: "Business", Portfolio: "Portfolio", "UI/UX": "UI/UX" } as Record<string, string>,
     projects: [
@@ -167,7 +168,7 @@ const ar: typeof en = {
       sale: {
         label: "شراء مرة واحدة",
         note: "تدفع مرة واحدة وتمتلك الموقع وكوده.",
-        terms: [pay.ar, "الاستضافة مشمولة لأول سنة. بعدها يمكنك الاستمرار مع إدارة المواقع بدءاً من 1,500 ج.م شهرياً."],
+        terms: [pay.ar, "الاستضافة مشمولة لأول سنة. بعدها يمكنك الاستمرار مع إدارة المواقع بدءاً من 1,000 ج.م شهرياً."],
         linkText: "شاهد إدارة المواقع",
         packages: [
           { name: "بورتفوليو", tagline: "أعمالك على الإنترنت.", time: "دفعة واحدة", features: ["تصميم احترافي", "استضافة لمدة سنة", "دومين", "دعم فني", "حماية SSL"] },
@@ -183,13 +184,14 @@ const ar: typeof en = {
         packages: [
           { name: "الإدارة القياسية", tagline: "حافظ على تشغيله.", time: "شهرياً", features: ["إدارة الموقع وصيانة دورية", "حتى 10 طلبات تعديل تصميم أو محتوى شهرياً", "دعم فني وإصلاح الأخطاء", "ملخص شهري للعمل وحالة الموقع"] },
           { name: "الإدارة الكاملة + الاستضافة", tagline: "الاستضافة مشمولة.", time: "شهرياً", features: ["إدارة الموقع وصيانة دورية", "حتى 10 طلبات تعديل تصميم أو محتوى شهرياً", "دعم فني وإصلاح الأخطاء", "ملخص شهري للعمل وحالة الموقع", "+إدارة الاستضافة والسيرفر", "+نسخ احتياطي تلقائي وتحديثات أمان", "+مراقبة التشغيل مع تنبيهات"] },
+          { name: "الإدارة المخصصة", tagline: "مصممة حول موقعك.", time: "تُحدد بعد مكالمة قصيرة", features: ["كل ما في الإدارة الكاملة + الاستضافة", "+حجم تعديلات أكبر واستجابة ذات أولوية", "+دعم الأنظمة المخصصة والتكاملات والباك إند", "+مصممة حسب احتياجات عملك"] },
         ],
       },
     },
     faq: [
       ["متى أدفع؟", pay.ar],
       ["هل يوجد حد أدنى لمدة الإيجار؟", "الحد الأدنى شهر واحد، وبدون رسوم تأسيس."],
-      ["ماذا يحدث بعد السنة الأولى من الاستضافة؟", "يمكنك الاستمرار مع إدارة المواقع بدءاً من 1,500 ج.م شهرياً."],
+      ["ماذا يحدث بعد السنة الأولى من الاستضافة؟", "يمكنك الاستمرار مع إدارة المواقع بدءاً من 1,000 ج.م شهرياً."],
       ["ماذا يحدث لو أردت إيقاف الإيجار؟", "يمكنك إيقاف موقعك لمدة شهر كامل، والعودة إليه بدون أي رسوم. لا توجد رسوم لإعادة التفعيل."],
       ["هل الدومين مسجّل باسمي؟", "نعم. الدومين مسجّل باسمك."],
     ] as [string, string][],
@@ -202,7 +204,7 @@ const ar: typeof en = {
     stats: ["مشاريع تم بناؤها", "مجالات", "مكالمة تعارف مجانية"], call: "20 دقيقة", alt: "صورة عمرو الطناني",
   },
   work: {
-    marker: "الأعمال المختارة", kicker: "مبني للواقع", h2a: "دراسات حالة", h2b: "بهدف واضح.", viewAll: "عرض كل الأعمال",
+    marker: "الأعمال المختارة", kicker: "مبني للواقع", h2a: "دراسات حالة", h2b: "بهدف واضح.", prev: "المشروع السابق", next: "المشروع التالي", viewAll: "عرض كل الأعمال",
     browse: "تصفّح حسب المجال", choose: "اختر اتجاهاً.", tabsLabel: "تصنيفات دراسات الحالة", open: "افتح المشروع", openAria: (t: string) => `افتح ${t}`,
     categories: { Healthcare: "الرعاية الصحية", Construction: "الإنشاءات", "E-commerce": "التجارة الإلكترونية", Business: "الأعمال", Portfolio: "البورتفوليو", "UI/UX": "UI/UX" },
     projects: [

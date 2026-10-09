@@ -24,6 +24,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html.lenis, html.lenis body { height: auto; scroll-behavior: auto; }
 body {
   margin: 0;
   background: var(--charcoal);
@@ -808,3 +809,94 @@ h2 { font-size: clamp(50px, 6.5vw, 102px); margin-bottom: 30px; }
 [dir="rtl"] .case-study-layout { grid-template-columns: 200px minmax(0, 1fr); }
 [dir="rtl"] .case-category-rail .category-tabs button { font-size: 13px; }
 @media (max-width: 800px) { [dir="rtl"] .case-study-layout { grid-template-columns: minmax(0, 1fr); } }
+
+/* Back-to-top button */
+.to-top {
+  position: fixed; right: 24px; bottom: 24px; z-index: 40;
+  width: 48px; height: 48px; display: grid; place-items: center;
+  color: var(--charcoal); background: var(--copper); border-radius: 50%;
+  opacity: 0; transform: translateY(16px); pointer-events: none;
+  transition: opacity 0.4s, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), background 0.2s;
+}
+.to-top.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+@media (hover: hover) { .to-top:hover { background: var(--copper-light); transform: translateY(-3px); } }
+
+/* Project slider */
+.project-media { min-width: 0; }
+.project-media .project-image { overflow: hidden; }
+.slider-track { display: flex; height: 100%; transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); }
+.slide { position: relative; flex: 0 0 100%; min-width: 0; height: 100%; }
+.slide a { display: block; width: 100%; height: 100%; }
+.slider-controls { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
+.slider-arrow {
+  width: 40px; height: 40px; display: grid; place-items: center;
+  border: 1px solid var(--line); color: var(--ivory); border-radius: 50%;
+  transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+}
+@media (hover: hover) { .slider-arrow:not(:disabled):hover { background: var(--copper); border-color: var(--copper); color: var(--charcoal); } }
+.slider-arrow:disabled { opacity: 0.3; cursor: default; }
+.slider-dots { display: flex; gap: 8px; margin-inline: auto; }
+.slider-dots button { width: 8px; height: 8px; padding: 0; border-radius: 50%; background: var(--line); transition: background 0.3s, width 0.3s; }
+.slider-dots button.active { width: 24px; border-radius: 4px; background: var(--copper); }
+.slider-count { font-family: var(--mono); font-size: 12px; color: var(--smoke); }
+.project-info { transition: opacity 0.28s ease, transform 0.28s ease; }
+.project-info.is-hidden { opacity: 0; transform: translateY(10px); }
+.project-card.stage-entering { animation: project-card-fade-in-left 0.72s cubic-bezier(0.23, 1, 0.32, 1) both; }
+
+/* Slider controls overlaid on the image so they are always on screen */
+.project-media { position: relative; }
+.slider-controls { position: absolute; inset: 0; margin: 0; display: block; pointer-events: none; }
+.slider-controls > * { pointer-events: auto; }
+.slider-arrow {
+  position: absolute; top: 50%; margin-top: -22px; width: 44px; height: 44px;
+  background: rgba(17, 17, 15, 0.7); border-color: rgba(242, 238, 232, 0.4); backdrop-filter: blur(6px);
+}
+.slider-arrow:first-child { inset-inline-start: 12px; }
+.slider-arrow:last-child { inset-inline-end: 12px; }
+.slider-dots, .slider-count {
+  position: absolute; bottom: 14px; margin: 0; background: rgba(17, 17, 15, 0.7); backdrop-filter: blur(6px);
+}
+.slider-dots { inset-inline-end: 64px; padding: 9px 12px; border-radius: 999px; align-items: center; }
+.slider-count { inset-inline-end: 12px; padding: 6px 10px; border-radius: 999px; color: var(--ivory); }
+.slider-dots button { background: rgba(242, 238, 232, 0.4); }
+.slider-dots button.active { background: var(--copper); }
+
+/* Slide motion: image settles from a slight zoom, details glide in from the side */
+.slide img { transform: scale(1.12); transition: transform 1.4s cubic-bezier(0.23, 1, 0.32, 1); }
+.slide.active img { transform: scale(1); }
+.project-info { animation: info-in 0.7s cubic-bezier(0.23, 1, 0.32, 1) backwards; }
+.project-info.is-hidden { transform: translateX(-24px); }
+@keyframes info-in { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+
+/* Taller image on desktop; each slide clips its own zoom so neighbours never peek in */
+.slide { overflow: hidden; }
+
+/* Desktop: arrows live in the gutter beside the image (under the 01 number), stacked */
+@media (min-width: 901px) {
+  .slider-arrow { width: 40px; height: 40px; margin-top: 0; background: transparent; backdrop-filter: none; border-color: var(--line); }
+  .slider-arrow:first-child { inset-inline-start: -52px; top: calc(50% - 46px); }
+  .slider-arrow:last-child { inset-inline-start: -52px; inset-inline-end: auto; top: calc(50% + 6px); }
+}
+
+/* Desktop: arrows are replaced by a vertical dot rail in the gutter; the dots on the image stay */
+.gutter-dots { display: none; }
+@media (min-width: 901px) {
+  .slider-arrow { display: none; }
+  .gutter-dots {
+    display: flex; position: absolute; inset-inline-start: -36px; top: 50%; transform: translateY(-50%);
+    flex-direction: column; gap: 12px;
+  }
+  .gutter-dots button { width: 8px; height: 8px; padding: 0; border-radius: 4px; background: var(--line); transition: background 0.3s, height 0.3s; }
+  .gutter-dots button.active { height: 28px; background: var(--copper); }
+  .gutter-dots button:hover { background: var(--copper-light); }
+}
+
+/* Desktop: the "n / total" counter moves into the gutter above the dots, written vertically */
+.gutter-count { font-family: var(--mono); font-size: 12px; color: var(--smoke); writing-mode: vertical-rl; margin-bottom: 14px; white-space: nowrap; }
+@media (min-width: 901px) {
+  .slider-count { display: none; }
+  .gutter-dots { width: 12px; align-items: center; inset-inline-start: -38px; }
+}
+
+/* Desktop: the counter is gone from the image, so the dots sit in the corner */
+@media (min-width: 901px) { .slider-dots { inset-inline-end: 12px; } }

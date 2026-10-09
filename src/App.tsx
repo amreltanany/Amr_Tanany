@@ -1,14 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ArrowDownRight,
+  ArrowUp,
   ArrowUpRight,
   Check,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Menu,
   MoveUpRight,
   X,
 } from "lucide-react";
+import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { copy, type Lang } from "./i18n";
+
+gsap.registerPlugin(ScrollTrigger);
+let lenis: Lenis | null = null;
 
 const base = import.meta.env.BASE_URL;
 
@@ -35,7 +44,7 @@ type PkgData = { price?: number; unit?: boolean; from?: boolean; custom?: boolea
 const packageTypes: { id: "rental" | "sale" | "management"; packages: PkgData[] }[] = [
   { id: "rental", packages: [{ price: 500, unit: true }, { price: 1000, unit: true, featured: true }] },
   { id: "sale", packages: [{ price: 3000 }, { price: 6000, featured: true }, { custom: true }] },
-  { id: "management", packages: [{ price: 1500, unit: true }, { price: 2000, unit: true }] },
+  { id: "management", packages: [{ price: 1000, unit: true }, { price: 1500, unit: true, featured: true }, { custom: true }] },
 ];
 
 const WHATSAPP = "https://wa.me/201119708154";
@@ -61,6 +70,12 @@ export default function App() {
   const [lang, setLang] = useState<Lang>(getInitialLang);
   const c = copy[lang];
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showTop, setShowTop] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const [activeCategory, setActiveCategory] = useState("Healthcare");
   const [displayedCategory, setDisplayedCategory] = useState("Healthcare");
   const [phase, setPhase] = useState<"idle" | "leaving" | "entering">("idle");
@@ -90,20 +105,83 @@ export default function App() {
     setPhase("leaving");
     setTimeout(() => {
       setDisplayedCategory(category);
+      clearTimeout(infoTimer.current);
+      setSlide(0); setInfoIdx(0); setInfoHidden(false);
       setPhase("entering");
       setTimeout(() => setPhase("idle"), 700);
     }, 240);
   };
 
+  // Smooth wheel scroll (Lenis) + scroll reveals (GSAP).
+  useEffect(() => {
+    lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    let raf = 0;
+    const tick = (t: number) => { lenis?.raf(t); raf = requestAnimationFrame(tick); };
+    raf = requestAnimationFrame(tick);
+
+    const cleanups: (() => void)[] = [];
+    const ctx = gsap.context(() => {
+      // Magnetic buttons: fine pointers on desktop only.
+      if (window.matchMedia("(pointer: fine) and (min-width: 900px)").matches) {
+
+        document.querySelectorAll<HTMLElement>(".button, .nav-cta").forEach((btn) => {
+          const move = (e: MouseEvent) => {
+            const r = btn.getBoundingClientRect();
+            gsap.to(btn, { x: (e.clientX - r.left - r.width / 2) * 0.35, y: (e.clientY - r.top - r.height / 2) * 0.35, duration: 0.3 });
+          };
+          const leave = () => gsap.to(btn, { x: 0, y: 0, duration: 1, ease: "elastic.out(1,0.3)" });
+          btn.addEventListener("mousemove", move);
+          btn.addEventListener("mouseleave", leave);
+          cleanups.push(() => { btn.removeEventListener("mousemove", move); btn.removeEventListener("mouseleave", leave); });
+        });
+      }
+
+      gsap.utils.toArray<HTMLElement>("section:not(#top) h2").forEach((el) =>
+        gsap.from(el, { y: 50, opacity: 0, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: el, start: "top 88%" } }),
+      );
+      gsap.utils.toArray<HTMLElement>(".about-portrait").forEach((el) => {
+        gsap.fromTo(el, { clipPath: "inset(0 0 100% 0)" }, { clipPath: "inset(0 0 0% 0)", duration: 1.4, ease: "expo.out", scrollTrigger: { trigger: el, start: "top 85%" } });
+        const img = el.querySelector("img");
+        if (img) gsap.fromTo(img, { scale: 1.3 }, { scale: 1, duration: 1.4, ease: "expo.out", scrollTrigger: { trigger: el, start: "top 85%" } });
+      });
+      gsap.to(".hero-visual", { y: -80, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    });
+
+    return () => {
+      cleanups.forEach((fn) => fn());
+      ctx.revert();
+      cancelAnimationFrame(raf);
+      lenis?.destroy();
+      lenis = null;
+    };
+  }, []);
+
   const scrollTo = (id: string) => {
     setMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (el) lenis ? lenis.scrollTo(el) : el.scrollIntoView({ behavior: "smooth" });
   };
 
   // project index keeps its text: i18n.projects[i] matches projects[i]
   const visibleProjects = projects
     .map((project, index) => ({ project, text: c.work.projects[index] }))
     .filter(({ project }) => project.category === displayedCategory);
+
+  // Slider: `slide` moves the image track at once; the side details fade out, swap, then fade in.
+  const [slide, setSlide] = useState(0);
+  const [infoIdx, setInfoIdx] = useState(0);
+  const [infoHidden, setInfoHidden] = useState(false);
+  const infoTimer = useRef<number>(0);
+  const touchX = useRef(0);
+  const goSlide = (next: number) => {
+    const i = Math.max(0, Math.min(visibleProjects.length - 1, next));
+    if (i === slide) return;
+    setSlide(i);
+    setInfoHidden(true);
+    clearTimeout(infoTimer.current);
+    infoTimer.current = window.setTimeout(() => { setInfoIdx(i); setInfoHidden(false); }, 280);
+  };
+  const info = visibleProjects[infoIdx];
 
   const typeData = packageTypes.find((t) => t.id === activeType)!;
   const typeText = c.pricing.types[activeType];
@@ -328,36 +406,65 @@ export default function App() {
           </aside>
 
           <div className={`project-stage${phase === "leaving" ? " stage-leaving" : ""}`}>
-            <div
-              key={displayedCategory}
-              className={`project-layer project-layer-current${phase === "entering" ? " stage-entering" : ""}`}
-            >
-              {visibleProjects.map(({ project, text }, index) => (
-                <article
-                  className={`project-card project-enter-fade-left project-enter-card-${index}`}
-                  key={`${activeCategory}-${project.id}-${project.url}`}
+            <article className={`project-card${phase === "entering" ? " stage-entering" : ""}`} key={displayedCategory}>
+              <div className="project-number">0{slide + 1}</div>
+              <div className="project-media">
+                <div
+                  className="project-image"
+                  onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
+                  onTouchEnd={(e) => {
+                    const dx = e.changedTouches[0].clientX - touchX.current;
+                    if (Math.abs(dx) > 50) goSlide(slide + (dx < 0 ? 1 : -1) * (lang === "ar" ? -1 : 1));
+                  }}
                 >
-                  <div className="project-number">{project.id}</div>
-                  <div className="project-image">
-                    <a href={project.url} target="_blank" rel="noreferrer" aria-label={c.work.openAria(text.title)}>
-                      <img src={project.image} alt={text.title} loading="eager" decoding="async" />
-                    </a>
-                    <span className={`project-accent ${project.accent}`}>{text.type}</span>
+                  <div className="slider-track" style={{ transform: `translateX(${(lang === "ar" ? 1 : -1) * slide * 100}%)` }}>
+                    {visibleProjects.map(({ project, text }, i) => (
+                      <div className={i === slide ? "slide active" : "slide"} key={project.url}>
+                        <a href={project.url} target="_blank" rel="noreferrer" aria-label={c.work.openAria(text.title)}>
+                          <img src={project.image} alt={text.title} loading="eager" decoding="async" />
+                        </a>
+                        <span className={`project-accent ${project.accent}`}>{text.type}</span>
+                      </div>
+                    ))}
                   </div>
-                  <div className="project-info">
-                    <p className="mono-label">{text.type}</p>
-                    <h3>{text.title}</h3>
-                    <p>{text.description}</p>
-                    <div className="tag-row" dir="ltr">
-                      {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                </div>
+                {visibleProjects.length > 1 && (
+                  <div className="slider-controls">
+                    <button className="slider-arrow" onClick={() => goSlide(slide - 1)} disabled={slide === 0} aria-label={c.work.prev}>
+                      {lang === "ar" ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+                    </button>
+                    <div className="slider-dots">
+                      {visibleProjects.map(({ project, text }, i) => (
+                        <button key={project.url} className={i === slide ? "active" : ""} onClick={() => goSlide(i)} aria-label={text.title} aria-current={i === slide} />
+                      ))}
                     </div>
-                    <a className="case-link" href={project.url} target="_blank" rel="noreferrer">
-                      {c.work.open} <ArrowUpRight size={15} />
-                    </a>
+                    <div className="gutter-dots">
+                      <span className="gutter-count">{slide + 1} / {visibleProjects.length}</span>
+                      {visibleProjects.map(({ project, text }, i) => (
+                        <button key={project.url} className={i === slide ? "active" : ""} onClick={() => goSlide(i)} aria-label={text.title} aria-current={i === slide} />
+                      ))}
+                    </div>
+                    <span className="slider-count">{slide + 1} / {visibleProjects.length}</span>
+                    <button className="slider-arrow" onClick={() => goSlide(slide + 1)} disabled={slide === visibleProjects.length - 1} aria-label={c.work.next}>
+                      {lang === "ar" ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
+                    </button>
                   </div>
-                </article>
-              ))}
-            </div>
+                )}
+              </div>
+              {info && (
+                <div className={`project-info${infoHidden ? " is-hidden" : ""}`} key={infoIdx}>
+                  <p className="mono-label">{info.text.type}</p>
+                  <h3>{info.text.title}</h3>
+                  <p>{info.text.description}</p>
+                  <div className="tag-row" dir="ltr">
+                    {info.project.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                  </div>
+                  <a className="case-link" href={info.project.url} target="_blank" rel="noreferrer">
+                    {c.work.open} <ArrowUpRight size={15} />
+                  </a>
+                </div>
+              )}
+            </article>
           </div>
         </div>
       </section>
@@ -478,6 +585,10 @@ export default function App() {
       </section>
 
       {/* Footer */}
+      <button className={showTop ? "to-top is-visible" : "to-top"} onClick={() => (lenis ? lenis.scrollTo(0, { duration: 1.6 }) : window.scrollTo({ top: 0, behavior: "smooth" }))} aria-label={c.nav.back} tabIndex={showTop ? 0 : -1}>
+        <ArrowUp size={20} />
+      </button>
+
       <footer className="footer">
         <span>{c.footer.left}</span>
         <span>{c.footer.mid}</span>
