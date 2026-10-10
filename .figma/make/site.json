@@ -1,6 +1,6 @@
 {
-  "title": "Amr ElTanany | Web Design & Development in Egypt",
-  "description": "Web designer and full-stack developer in Egypt. Fast, credible websites and digital systems for clinics, construction firms and online stores.",
+  "title": "Amr ElTanany (amreltanany) | Web Designer & Full-Stack Developer in Egypt",
+  "description": "Amr ElTanany (amreltanany) is a web designer and full-stack developer in Egypt. Fast, credible websites and digital systems for clinics, construction firms and online stores.",
   "language": "en",
   "robots": {
     "index": true
@@ -9,6 +9,6 @@
     "icon": "/favicon.svg"
   },
   "openGraph": {
-    "image": "https://amreltanany.github.io/Amr_Tanany/imports/amr.jpeg"
+    "image": "https://amreltanany.com/imports/amr.jpeg"
   }
 }

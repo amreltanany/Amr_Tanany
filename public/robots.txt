@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amreltanany.com/sitemap.xml
