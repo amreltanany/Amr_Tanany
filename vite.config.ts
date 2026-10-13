@@ -23,6 +23,8 @@ export default defineConfig(({ mode }) => {
     build: {
       sourcemap: emitSourcemaps ? 'inline' : false,
       minify: !emitSourcemaps,
+      // 404.html is a second entry: the server returns it for any unknown URL.
+      rollupOptions: { input: { main: path.resolve(__dirname, 'index.html'), notfound: path.resolve(__dirname, '404.html') } },
     },
     plugins: [
       react(),

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Page not found — Amr ElTanany</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/index.css" />
+    <style>
+      .site-header { background: var(--charcoal); backdrop-filter: none; }
+      .nav-links a { color: var(--smoke); font-size: 12px; letter-spacing: 0.04em; transition: color 0.2s; }
+      .nav-links a.nav-cta { display: flex; align-items: center; gap: 7px; color: var(--ivory); border-bottom: 1px solid var(--copper); padding: 11px 0 8px; }
+      @media (hover: hover) and (pointer: fine) { .nav-links a:hover { color: var(--ivory); } }
+
+      /* The video has a pure white background, so the page behind it is the site's ivory
+         and mix-blend-mode: multiply makes the white disappear. */
+      .nf { padding: 5.5rem clamp(22px, 7vw, 112px) 2.5rem; background: var(--ivory); color: var(--charcoal); text-align: center; }
+      .nf__inner { display: flex; flex-direction: column; align-items: center; }
+      .nf__video { width: min(26rem, 92vw); aspect-ratio: 2 / 1; object-fit: cover; mix-blend-mode: multiply; }
+      .nf__code { margin: 0.2rem 0 0; font: 700 clamp(3rem, 7vw, 4.5rem)/1 var(--serif); color: var(--copper); letter-spacing: 0.04em; }
+      .nf h1 { margin: 0.2rem 0 0; max-width: 52rem; font-size: clamp(1.3rem, 3vw, 2rem); line-height: 1.2; text-transform: uppercase; }
+      .nf__text { max-width: 36rem; margin: 0.8rem 0 0; font-size: clamp(1.1rem, 2.4vw, 1.4rem); color: #333; }
+      .nf__actions { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: 1.4rem; }
+      .nf .button { min-height: 52px; padding: 0 26px; }
+      .nf .button-dark { background: var(--charcoal); color: var(--ivory); }
+      @media (hover: hover) and (pointer: fine) { .nf .button-dark:hover { background: #2a2a26; } }
+    </style>
+  </head>
+  <body>
+    <main class="site-shell">
+      <div class="grain" aria-hidden="true"></div>
+
+      <header class="site-header">
+        <a class="wordmark" href="%BASE_URL%" aria-label="Back to home">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:27px;height:27px;color:var(--copper)" aria-hidden="true"><path d="M50 8L8 85h18l8-16h32l8 16h18L50 8zm0 22l11 22H39L50 30z" fill="currentColor" /></svg>
+          <span dir="ltr">AMR<span class="wordmark-dot">.</span></span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="%BASE_URL%#pricing">Pricing</a>
+          <a href="%BASE_URL%#about">About</a>
+          <a href="%BASE_URL%#work">Work</a>
+          <a href="%BASE_URL%#solutions">Solutions</a>
+          <a href="%BASE_URL%#process">Process</a>
+          <a class="nav-cta" href="%BASE_URL%#contact">Start a project</a>
+        </nav>
+      </header>
+
+      <section class="nf">
+        <div class="nf__inner">
+          <video class="nf__video" src="/assets/video/404.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+          <p class="nf__code">404</p>
+          <h1>Page not found. Signal also not found. Honestly, nothing found.</h1>
+          <p class="nf__text">I looked everywhere. Even behind the couch.</p>
+          <div class="nf__actions">
+            <a class="button button-copper" href="%BASE_URL%">Back to Home</a>
+            <a class="button button-dark" href="%BASE_URL%#work">View My Work</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© 2026 Amr ElTanany</span>
+        <span>Design + engineering from Egypt</span>
+        <div>
+          <a href="https://github.com/amreltanany" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.instagram.com/amr_eltanany_" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://wa.me/201119708154" target="_blank" rel="noreferrer">WhatsApp</a>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
