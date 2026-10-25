@@ -222,7 +222,6 @@ export default function App() {
       {/* Hero */}
       <section id="top" className="hero section-pad">
         <div className="hero-copy reveal-up">
-          <p className="eyebrow"><span className="status-dot" /> {c.hero.eyebrow}</p>
           <h1>{c.hero.h1a}<br /><em>{c.hero.h1b}</em></h1>
           <p className="hero-intro">{c.hero.intro}</p>
           <div className="hero-actions">
