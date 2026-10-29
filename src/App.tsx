@@ -119,6 +119,16 @@ export default function App() {
     const tick = (t: number) => { lenis?.raf(t); raf = requestAnimationFrame(tick); };
     raf = requestAnimationFrame(tick);
 
+    // The intro loader (index.html) locks the page; start Lenis only once it has ended.
+    const root = document.documentElement;
+    let waitLoader = 0;
+    if (root.classList.contains("loading")) {
+      lenis.stop();
+      waitLoader = window.setInterval(() => {
+        if (!root.classList.contains("loading")) { lenis?.start(); clearInterval(waitLoader); }
+      }, 100);
+    }
+
     const cleanups: (() => void)[] = [];
     const ctx = gsap.context(() => {
       // Magnetic buttons: fine pointers on desktop only.
@@ -151,6 +161,7 @@ export default function App() {
       cleanups.forEach((fn) => fn());
       ctx.revert();
       cancelAnimationFrame(raf);
+      clearInterval(waitLoader);
       lenis?.destroy();
       lenis = null;
     };
