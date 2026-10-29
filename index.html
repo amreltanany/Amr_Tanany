@@ -44,6 +44,19 @@
       ]
     }
     </script>
+    <!-- Intro loader: decides BEFORE the page paints, inline, so there is no flash -->
+    <script>
+    (function () { var d = document.documentElement; try {
+      var base = "/Amr_Tanany/";
+      var force = /[?&]loader=1/.test(location.search);                         // ?loader=1 forces it, for previews
+      var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+      var fresh = !nav || nav.type === "navigate";                              // not reload / back_forward
+      var internal = document.referrer && document.referrer.indexOf(location.origin) === 0; // came from our own site
+      var home = location.pathname === base || location.pathname === base + "index.html";
+      if (force || (home && fresh && !internal)) { d.classList.add("loading"); setTimeout(function () { d.classList.remove("loading"); }, 3400); }
+    } catch (e) {} })();
+    </script>
+    <style>.loader{z-index:5000;color:#f2eee8;direction:ltr;background:#11110f;place-items:center;display:none;position:fixed;inset:0;overflow:hidden}html.loading .loader{animation:.75s cubic-bezier(.76,0,.24,1) 2.55s forwards ld-lift;display:grid}html.loading,html.loading body{overflow:hidden}html.loading .reveal-up,html.loading .reveal-in{animation-play-state:paused}.loader__pair{--mark:clamp(4.6rem, 9vw, 7.2rem);align-items:center;display:flex}.loader__mark{width:var(--mark);height:var(--mark);background:#c47b57;border-radius:50%;flex:none;place-items:center;animation:.5s cubic-bezier(.34,1.56,.64,1) .1s forwards ld-dot,.9s ease-in-out .65s forwards ld-settle;display:grid;transform:scale(0)}.loader__mark svg{color:#f2eee8;clip-path:inset(0 100% 0 0);width:50%;height:auto;animation:.55s cubic-bezier(.65,0,.35,1) .45s forwards ld-reveal;display:block}.loader__name{grid-template-columns:0fr;animation:.7s cubic-bezier(.65,0,.35,1) 1.15s forwards ld-open;display:grid}.loader__name>div{padding-left:clamp(.9rem,2vw,1.6rem);min-width:0;padding-block:.2em;overflow:hidden}.loader__text{white-space:nowrap;animation:.7s cubic-bezier(.22,1,.36,1) 1.25s forwards ld-rise;display:block;transform:translateY(115%)}.loader__text strong{letter-spacing:.01em;text-transform:uppercase;font:700 clamp(1.25rem,3.1vw,2.5rem)/1.02 Space Grotesk,sans-serif;display:block}.loader__text span{letter-spacing:.42em;text-transform:uppercase;color:#c47b57;margin-top:.35em;font:700 clamp(.62rem,1.2vw,.95rem) Space Grotesk,sans-serif;display:block}@keyframes ld-dot{0%{transform:scale(0)}to{transform:scale(1)}}@keyframes ld-settle{0%{transform:scale(1)}55%{transform:scale(.92)}to{transform:scale(1)}}@keyframes ld-reveal{to{clip-path:inset(0)}}@keyframes ld-open{to{grid-template-columns:1fr}}@keyframes ld-rise{to{transform:translateY(0)}}@keyframes ld-lift{to{visibility:hidden;transform:translateY(-100%)}}@media (width<=560px){.loader__text strong{font-size:1.15rem}}</style>
     
     <meta name="description" content="Amr ElTanany (amreltanany) is a web designer and full-stack developer in Egypt. Fast, credible websites and digital systems for clinics, construction firms and online stores.">
     <link rel="icon" href="/Amr_Tanany/favicon.svg">
@@ -52,11 +65,17 @@
     <meta property="og:image" content="https://amreltanany.com/imports/amr.jpeg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://amreltanany.com/imports/amr.jpeg">
-    <script type="module" crossorigin src="/Amr_Tanany/assets/main-CuEIRaSw.js"></script>
-    <link rel="stylesheet" crossorigin href="/Amr_Tanany/assets/src-CFjiCzxQ.css">
+    <script type="module" crossorigin src="/Amr_Tanany/assets/main-BgiZlogF.js"></script>
+    <link rel="stylesheet" crossorigin href="/Amr_Tanany/assets/src-D6Ks0Dd2.css">
   </head>
   <body>
     
+    <div class="loader" aria-hidden="true">
+      <div class="loader__pair">
+        <div class="loader__mark"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8L8 85h18l8-16h32l8 16h18L50 8zm0 22l11 22H39L50 30z" fill="currentColor" /></svg></div>
+        <div class="loader__name"><div><div class="loader__text"><strong>Amr ElTanany</strong><span>Design + Engineering</span></div></div></div>
+      </div>
+    </div>
     <div id="root"></div>
     
   </body>
