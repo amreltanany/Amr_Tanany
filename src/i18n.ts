@@ -80,7 +80,7 @@ const en = {
   work: {
     marker: "Selected work", kicker: "Built for the real world", h2a: "Case studies", h2b: "with intent.", viewAll: "View all work", prev: "Previous project", next: "Next project",
     browse: "Browse by practice", choose: "Choose a direction.", tabsLabel: "Case study categories", open: "Open project", openAria: (t: string) => `Open ${t}`,
-    categories: { Healthcare: "Healthcare", Construction: "Construction", "E-commerce": "E-commerce", Business: "Business", Portfolio: "Portfolio", "UI/UX": "UI/UX" } as Record<string, string>,
+    categories: { Healthcare: "Healthcare", Construction: "Construction", "E-commerce": "E-commerce", Business: "Business", Marketing: "Marketing", Portfolio: "Portfolio", "UI/UX": "UI/UX" } as Record<string, string>,
     projects: [
       { type: "HEALTHCARE / FULL-STACK", title: "TAJ Clinics", description: "A comprehensive healthcare management platform designed for modern clinics, featuring seamless appointment scheduling, interactive UI components, and integrated backend services." },
       { type: "Construction / CORPORATE", title: "Meridian", description: "A modern corporate website for a high-end architectural and precision engineering firm, featuring dynamic project showcases, service offerings, and interactive inquiry forms." },
@@ -94,6 +94,8 @@ const en = {
       { type: "Portfolio", title: "Portfolio", description: "Architected a portfolio to serve as a high-speed central hub for cutting-edge web projects, combining slick motion design and interactive features." },
       { type: "Portfolio", title: "Portfolio", description: "A responsive front-end showcase site highlighting developer projects, technical skills, and experience with a modern, tabbed interactive layout." },
       { type: "CREATIVE UI", title: "Interactive Masking", description: "Dynamic radial-gradient mask that moves with mouse/touch events to reveal an alternate image layer underneath." },
+      { type: "MARKETING / CREATIVE AGENCY", title: "Cairo Creatives", description: "A single-page website for my own creative agency in Cairo (video, web development and graphic design). An animated night scene of the Cairo Tower and Qasr El Nil bridge drawn in code, with 3D depth parallax, scroll-linked animation and a live portfolio of real client work." },
+      { type: "MARKETING / OUTDOOR MEDIA", title: "Display Egypt", description: "Developed DisplayEgypt, a dynamic WordPress platform built for an outdoor advertising leader, highlighting street-level campaigns, digital billboards, and high-impact urban displays." },
     ],
   },
   solutions: {
@@ -206,7 +208,7 @@ const ar: typeof en = {
   work: {
     marker: "الأعمال المختارة", kicker: "مبني للواقع", h2a: "دراسات حالة", h2b: "بهدف واضح.", prev: "المشروع السابق", next: "المشروع التالي", viewAll: "عرض كل الأعمال",
     browse: "تصفّح حسب المجال", choose: "اختر اتجاهاً.", tabsLabel: "تصنيفات دراسات الحالة", open: "افتح المشروع", openAria: (t: string) => `افتح ${t}`,
-    categories: { Healthcare: "الرعاية الصحية", Construction: "الإنشاءات", "E-commerce": "التجارة الإلكترونية", Business: "الأعمال", Portfolio: "البورتفوليو", "UI/UX": "UI/UX" },
+    categories: { Healthcare: "الرعاية الصحية", Construction: "الإنشاءات", "E-commerce": "التجارة الإلكترونية", Business: "الأعمال", Marketing: "التسويق", Portfolio: "البورتفوليو", "UI/UX": "UI/UX" },
     projects: [
       { type: "رعاية صحية / Full-Stack", title: "TAJ Clinics", description: "منصة متكاملة لإدارة العيادات الحديثة، تضم حجز مواعيد سلساً ومكونات واجهة تفاعلية وخدمات خلفية متكاملة." },
       { type: "إنشاءات / شركات", title: "Meridian", description: "موقع شركات حديث لمكتب هندسة معمارية ودقيقة راقٍ، يضم عرضاً ديناميكياً للمشاريع وخدمات الشركة ونماذج استفسار تفاعلية." },
@@ -220,6 +222,8 @@ const ar: typeof en = {
       { type: "بورتفوليو", title: "بورتفوليو", description: "صممت بورتفوليو ليكون مركزاً سريعاً لأحدث مشاريع الويب، يجمع بين حركات أنيقة وميزات تفاعلية." },
       { type: "بورتفوليو", title: "بورتفوليو", description: "موقع واجهة أمامية متجاوب يعرض مشاريع المطوّر ومهاراته وخبرته بتصميم تفاعلي حديث بتبويبات." },
       { type: "واجهة إبداعية", title: "Interactive Masking", description: "قناع بتدرج دائري يتحرك مع الماوس أو اللمس ليكشف طبقة صورة بديلة تحته." },
+      { type: "تسويق / وكالة إبداعية", title: "Cairo Creatives", description: "موقع من صفحة واحدة لوكالتي الإبداعية في القاهرة (فيديو وتطوير ويب وتصميم جرافيك). مشهد ليلي متحرك لبرج القاهرة وكوبري قصر النيل مرسوم بالكود، مع بارالاكس ثلاثي الأبعاد وحركات مرتبطة بالسكرول ومعرض أعمال حي لمشاريع عملاء حقيقيين." },
+      { type: "تسويق / إعلانات خارجية", title: "Display Egypt", description: "طوّرت DisplayEgypt، منصة WordPress ديناميكية لشركة رائدة في الإعلانات الخارجية، تبرز الحملات الميدانية واللوحات الرقمية والإعلانات الحضرية المؤثرة." },
     ],
   },
   solutions: {

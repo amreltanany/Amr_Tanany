@@ -22,21 +22,23 @@ let lenis: Lenis | null = null;
 const base = import.meta.env.BASE_URL;
 
 // Layout data only. Titles, descriptions and every other visible string come from i18n.ts (same order).
-const categoryKeys = ["Healthcare", "Construction", "E-commerce", "Business", "Portfolio", "UI/UX"];
+const categoryKeys = ["Healthcare", "Construction", "E-commerce", "Business", "Marketing", "Portfolio", "UI/UX"];
 
 const projects = [
   { id: "01", category: "Healthcare", image: `${base}imports/taj.jpeg`, tags: ["React 19", "Node.js", "Express", "TypeScript"], accent: "olive", url: "https://tajclinics-7f4tfgfb.manus.space/" },
   { id: "01", category: "Construction", image: `${base}imports/mei.jpeg`, tags: ["React", "Vite", "TypeScript", "Tailwind CSS"], accent: "copper", url: "https://amreltanany.github.io/MeridianBuild/" },
   { id: "02", category: "Construction", image: `${base}imports/sam.jpeg`, tags: ["WordPress", "PHP", "Responsive Design", "SEO"], accent: "copper", url: "https://samconstructions-eg.com/" },
   { id: "01", category: "E-commerce", image: `${base}imports/switch.jpeg`, tags: ["React", "TypeScript", "Tailwind CSS"], accent: "copper", url: "https://amreltanany.github.io/Switch-On/" },
-  { id: "02", category: "E-commerce", image: `${base}imports/qaro2a.jpeg`, tags: ["ASP.NET Core", "SQL Server", "JWT Auth"], accent: "copper", url: "http://qaro2a.com/" },
+  { id: "02", category: "E-commerce", image: `${base}imports/qaro2a-v2.jpeg`, tags: ["ASP.NET Core", "SQL Server", "JWT Auth"], accent: "copper", url: "http://qaro2a.com/" },
   { id: "03", category: "E-commerce", image: `${base}imports/sneakers.jpeg`, tags: ["HTML5", "CSS3", "JavaScript"], accent: "copper", url: "https://amreltanany.github.io/sneakers/" },
-  { id: "01", category: "Business", image: `${base}imports/display.jpeg`, tags: ["WordPress", "PHP", "Responsive Design", "SEO"], accent: "olive", url: "https://displayegypt.com/" },
+  { id: "01", category: "Business", image: `${base}imports/display-v2.jpeg`, tags: ["WordPress", "PHP", "Responsive Design", "SEO"], accent: "olive", url: "https://displayegypt.com/" },
   { id: "01", category: "Business", image: `${base}imports/apex.jpeg`, tags: ["Next.js 16", "React", "TypeScript", "Tailwind"], accent: "copper", url: "https://amreltanany.github.io/apex-nine-racing/" },
   { id: "01", category: "Portfolio", image: `${base}imports/porfolio.jpeg`, tags: ["React + Vite", "TypeScript", "Tailwind"], accent: "copper", url: "https://amreltanany.github.io/Amr_Portfolio/" },
   { id: "02", category: "Portfolio", image: `${base}imports/porfolio2.jpeg`, tags: ["React + Vite", "TypeScript", "Tailwind"], accent: "copper", url: "https://amreltanany.github.io/ElTanany/" },
   { id: "03", category: "Portfolio", image: `${base}imports/porfolio3.jpeg`, tags: ["HTML5", "GITHUB PAGES", "Tailwind"], accent: "copper", url: "https://amreltanany.github.io/portfolio-/" },
   { id: "01", category: "UI/UX", image: `${base}imports/ronin.jpeg`, tags: ["UI/UX", "Motion", "Interaction"], accent: "copper", url: "https://amreltanany.github.io/ronin/" },
+  { id: "01", category: "Marketing", image: `${base}imports/cairo-creatives.jpeg`, tags: ["Astro 5", "Vanilla JavaScript"], accent: "copper", url: "https://amreltanany.github.io/Cairo-Creatives/" },
+  { id: "02", category: "Marketing", image: `${base}imports/display-v2.jpeg`, tags: ["WordPress", "PHP", "Responsive Design", "SEO"], accent: "olive", url: "https://displayegypt.com/" },
 ];
 
 // DRAFT pricing numbers: edit here. Names, features and notes are in i18n.ts (same order).
