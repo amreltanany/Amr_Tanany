@@ -31,7 +31,6 @@ const projects = [
   { id: "01", category: "E-commerce", image: `${base}imports/switch.jpeg`, tags: ["React", "TypeScript", "Tailwind CSS"], accent: "copper", url: "https://amreltanany.github.io/Switch-On/" },
   { id: "02", category: "E-commerce", image: `${base}imports/qaro2a-v2.jpeg`, tags: ["ASP.NET Core", "SQL Server", "JWT Auth"], accent: "copper", url: "http://qaro2a.com/" },
   { id: "03", category: "E-commerce", image: `${base}imports/sneakers.jpeg`, tags: ["HTML5", "CSS3", "JavaScript"], accent: "copper", url: "https://amreltanany.github.io/sneakers/" },
-  { id: "01", category: "Business", image: `${base}imports/display-v2.jpeg`, tags: ["WordPress", "PHP", "Responsive Design", "SEO"], accent: "olive", url: "https://displayegypt.com/" },
   { id: "01", category: "Business", image: `${base}imports/apex.jpeg`, tags: ["Next.js 16", "React", "TypeScript", "Tailwind"], accent: "copper", url: "https://amreltanany.github.io/apex-nine-racing/" },
   { id: "01", category: "Portfolio", image: `${base}imports/porfolio.jpeg`, tags: ["React + Vite", "TypeScript", "Tailwind"], accent: "copper", url: "https://amreltanany.github.io/Amr_Portfolio/" },
   { id: "02", category: "Portfolio", image: `${base}imports/porfolio2.jpeg`, tags: ["React + Vite", "TypeScript", "Tailwind"], accent: "copper", url: "https://amreltanany.github.io/ElTanany/" },
