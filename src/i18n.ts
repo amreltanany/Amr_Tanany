@@ -95,6 +95,7 @@ const en = {
       { type: "CREATIVE UI", title: "Interactive Masking", description: "Dynamic radial-gradient mask that moves with mouse/touch events to reveal an alternate image layer underneath." },
       { type: "MARKETING / CREATIVE AGENCY", title: "Cairo Creatives", description: "A single-page website for my own creative agency in Cairo (video, web development and graphic design). An animated night scene of the Cairo Tower and Qasr El Nil bridge drawn in code, with 3D depth parallax, scroll-linked animation and a live portfolio of real client work." },
       { type: "MARKETING / OUTDOOR MEDIA", title: "Display Egypt", description: "Developed DisplayEgypt, a dynamic WordPress platform built for an outdoor advertising leader, highlighting street-level campaigns, digital billboards, and high-impact urban displays." },
+      { type: "E-COMMERCE / BAKERY", title: "Velloura", description: "A coffee shop and bakery storefront in Cairo with a time-of-day bake slider, a short menu with allergens, a cake builder, a pre-order box and three locations. Prices in EGP, smooth scroll animation throughout." },
     ],
   },
   solutions: {
@@ -222,6 +223,7 @@ const ar: typeof en = {
       { type: "واجهة إبداعية", title: "Interactive Masking", description: "قناع بتدرج دائري يتحرك مع الماوس أو اللمس ليكشف طبقة صورة بديلة تحته." },
       { type: "تسويق / وكالة إبداعية", title: "Cairo Creatives", description: "موقع من صفحة واحدة لوكالتي الإبداعية في القاهرة (فيديو وتطوير ويب وتصميم جرافيك). مشهد ليلي متحرك لبرج القاهرة وكوبري قصر النيل مرسوم بالكود، مع بارالاكس ثلاثي الأبعاد وحركات مرتبطة بالسكرول ومعرض أعمال حي لمشاريع عملاء حقيقيين." },
       { type: "تسويق / إعلانات خارجية", title: "Display Egypt", description: "طوّرت DisplayEgypt، منصة WordPress ديناميكية لشركة رائدة في الإعلانات الخارجية، تبرز الحملات الميدانية واللوحات الرقمية والإعلانات الحضرية المؤثرة." },
+      { type: "تجارة إلكترونية / مخبز", title: "Velloura", description: "موقع متجر لمقهى ومخبز في القاهرة، فيه شريط يعرض المخبوزات حسب الوقت من اليوم، وقائمة قصيرة مع مسببات الحساسية، ومصمم كيك، وصندوق طلب مسبق، وثلاثة فروع. الأسعار بالجنيه المصري مع حركة سكرول ناعمة في كل الصفحة." },
     ],
   },
   solutions: {
