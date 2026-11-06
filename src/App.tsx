@@ -115,6 +115,20 @@ export default function App() {
     }, 240);
   };
 
+  // Arrow divider: draws once when scrolled to (also if the scroll jumps past it).
+  useEffect(() => {
+    const els = [...document.querySelectorAll<HTMLElement>(".arrow")];
+    let tops: number[] = [];
+    const measure = () => { tops = els.map((e) => { const r = e.getBoundingClientRect(); return r.top + window.scrollY + r.height / 4; }); };
+    const check = () => els.forEach((e, i) => { if (!e.classList.contains("is-drawn") && window.scrollY + window.innerHeight > tops[i]) e.classList.add("is-drawn"); });
+    measure(); check();
+    const onResize = () => { measure(); check(); };
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", onResize);
+    const t = window.setTimeout(onResize, 1500); // layout settles after images/fonts
+    return () => { window.removeEventListener("scroll", check); window.removeEventListener("resize", onResize); clearTimeout(t); };
+  }, []);
+
   // Smooth wheel scroll (Lenis) + scroll reveals (GSAP).
   useEffect(() => {
     lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
@@ -384,6 +398,14 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* Arrow divider */}
+      <div className="arrow" aria-hidden="true">
+        <svg viewBox="0 0 357 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path className="tip" pathLength="1000" d="M4.10686 244.355C6.01943 245.128 7.40235 246.589 8.85801 247.978C13.6383 252.54 17.313 258.941 17.6124 265.599C19.6026 258.667 24.5722 250.344 32.0167 248.371" />
+          <path className="line" pathLength="1000" d="M355.377 2.00001C355.377 102.685 321.875 149.594 226.369 161.434C185.004 166.562 18.6108 161.434 18.6108 262" />
+        </svg>
+      </div>
 
       {/* Work */}
       <section id="work" className="work-section section-pad">
