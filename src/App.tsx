@@ -36,8 +36,8 @@ const projects = [
   { id: "02", category: "Portfolio", image: `${base}imports/porfolio2.jpeg`, tags: ["React + Vite", "TypeScript", "Tailwind"], accent: "copper", url: "https://amreltanany.github.io/ElTanany/" },
   { id: "03", category: "Portfolio", image: `${base}imports/porfolio3.jpeg`, tags: ["HTML5", "GITHUB PAGES", "Tailwind"], accent: "copper", url: "https://amreltanany.github.io/portfolio-/" },
   { id: "01", category: "UI/UX", image: `${base}imports/ronin.jpeg`, tags: ["UI/UX", "Motion", "Interaction"], accent: "copper", url: "https://amreltanany.github.io/ronin/" },
-  { id: "01", category: "Marketing", image: `${base}imports/cairo-creatives.jpeg`, tags: ["Astro 5", "Vanilla JavaScript"], accent: "copper", url: "https://amreltanany.github.io/Cairo-Creatives/" },
-  { id: "02", category: "Marketing", image: `${base}imports/display-v2.jpeg`, tags: ["WordPress", "PHP", "Responsive Design", "SEO"], accent: "olive", url: "https://displayegypt.com/" },
+  { id: "01", category: "Marketing", image: `${base}imports/display-v2.jpeg`, tags: ["WordPress", "PHP", "Responsive Design", "SEO"], accent: "olive", url: "https://displayegypt.com/" },
+  { id: "02", category: "Marketing", image: `${base}imports/cairo-creatives.jpeg`, tags: ["Astro 5", "Vanilla JavaScript"], accent: "copper", url: "https://amreltanany.github.io/Cairo-Creatives/" },
   { id: "04", category: "E-commerce", image: `${base}imports/velloura-hero2.jpeg`, tags: ["Next.js 16", "React", "TypeScript", "Tailwind"], accent: "copper", url: "https://amreltanany.github.io/velloura/" },
   { id: "05", category: "E-commerce", image: `${base}imports/velloura-bakery.jpeg`, tags: ["Next.js 16", "React", "TypeScript", "Tailwind"], accent: "copper", url: "https://amreltanany.github.io/velloura-bakery/" },
 ];
