@@ -22,7 +22,7 @@ let lenis: Lenis | null = null;
 const base = import.meta.env.BASE_URL;
 
 // Layout data only. Titles, descriptions and every other visible string come from i18n.ts (same order).
-const categoryKeys = ["Healthcare", "Construction", "E-commerce", "Business", "Marketing", "Portfolio", "UI/UX"];
+const categoryKeys = ["Marketing", "Healthcare", "Construction", "E-commerce", "Business", "Portfolio", "UI/UX"];
 
 const projects = [
   { id: "01", category: "Healthcare", image: `${base}imports/taj.jpeg`, tags: ["React 19", "Node.js", "Express", "TypeScript"], accent: "olive", url: "https://tajclinics-7f4tfgfb.manus.space/" },
@@ -79,8 +79,8 @@ export default function App() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  const [activeCategory, setActiveCategory] = useState("Healthcare");
-  const [displayedCategory, setDisplayedCategory] = useState("Healthcare");
+  const [activeCategory, setActiveCategory] = useState("Marketing");
+  const [displayedCategory, setDisplayedCategory] = useState("Marketing");
   const [phase, setPhase] = useState<"idle" | "leaving" | "entering">("idle");
   const [activeTrack, setActiveTrack] = useState(0);
   const [activeType, setActiveType] = useState<"rental" | "sale" | "management">("sale"); // opens on one-time purchase
