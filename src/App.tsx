@@ -39,6 +39,7 @@ const projects = [
   { id: "01", category: "Marketing", image: `${base}imports/cairo-creatives.jpeg`, tags: ["Astro 5", "Vanilla JavaScript"], accent: "copper", url: "https://amreltanany.github.io/Cairo-Creatives/" },
   { id: "02", category: "Marketing", image: `${base}imports/display-v2.jpeg`, tags: ["WordPress", "PHP", "Responsive Design", "SEO"], accent: "olive", url: "https://displayegypt.com/" },
   { id: "04", category: "E-commerce", image: `${base}imports/velloura-hero.jpeg`, tags: ["HTML5", "CSS3", "JavaScript", "GSAP"], accent: "copper", url: "https://amreltanany.github.io/velloura/" },
+  { id: "05", category: "E-commerce", image: `${base}imports/velloura-bakery.jpeg`, tags: ["HTML5", "CSS3", "JavaScript", "GSAP"], accent: "copper", url: "https://amreltanany.github.io/velloura-bakery/" },
 ];
 
 // DRAFT pricing numbers: edit here. Names, features and notes are in i18n.ts (same order).
