@@ -97,6 +97,7 @@ const en = {
       { type: "MARKETING / CREATIVE AGENCY", title: "Cairo Creatives", description: "A single-page website for my own creative agency in Cairo (video, web development and graphic design). An animated night scene of the Cairo Tower and Qasr El Nil bridge drawn in code, with 3D depth parallax, scroll-linked animation and a live portfolio of real client work." },
       { type: "E-COMMERCE / BAKERY", title: "Velloura", description: "A coffee shop and bakery storefront in Cairo with a time-of-day bake slider, a short menu with allergens, a cake builder, a pre-order box and three locations. Prices in EGP, smooth scroll animation throughout." },
       { type: "E-COMMERCE / NEIGHBORHOOD BAKERY", title: "Velloura Bakery", description: "A single-page neighborhood bakery site in Cairo with a bold blue and lime identity: a loading intro, a scroll-driven hero, a best-sellers menu with prices in EGP, click-through ordering cards, a visit card with hours and directions, a catering FAQ and a sign-up form." },
+      { type: "E-COMMERCE / SNEAKERS", title: "Shoess", description: "A sneaker storefront designed in Cairo and made in Egypt: a five-model product switcher with a giant scroll-driven wordmark, colour swatches, size finder, prices in EGP and smooth animation throughout." },
     ],
   },
   solutions: {
@@ -226,6 +227,7 @@ const ar: typeof en = {
       { type: "تسويق / وكالة إبداعية", title: "Cairo Creatives", description: "موقع من صفحة واحدة لوكالتي الإبداعية في القاهرة (فيديو وتطوير ويب وتصميم جرافيك). مشهد ليلي متحرك لبرج القاهرة وكوبري قصر النيل مرسوم بالكود، مع بارالاكس ثلاثي الأبعاد وحركات مرتبطة بالسكرول ومعرض أعمال حي لمشاريع عملاء حقيقيين." },
       { type: "تجارة إلكترونية / مخبز", title: "Velloura", description: "موقع متجر لمقهى ومخبز في القاهرة، فيه شريط يعرض المخبوزات حسب الوقت من اليوم، وقائمة قصيرة مع مسببات الحساسية، ومصمم كيك، وصندوق طلب مسبق، وثلاثة فروع. الأسعار بالجنيه المصري مع حركة سكرول ناعمة في كل الصفحة." },
       { type: "تجارة إلكترونية / مخبز الحي", title: "Velloura Bakery", description: "موقع من صفحة واحدة لمخبز حي في القاهرة بهوية زرقاء وليمونية جريئة: شاشة تحميل افتتاحية، وواجهة رئيسية تتحرك مع السكرول، وقائمة الأكثر مبيعاً بالأسعار بالجنيه المصري، وبطاقات طلب تفاعلية، وبطاقة زيارة بالمواعيد والاتجاهات، وأسئلة شائعة عن الطلبات الكبيرة ونموذج اشتراك." },
+      { type: "تجارة إلكترونية / أحذية رياضية", title: "Shoess", description: "متجر أحذية رياضية مصمم في القاهرة ومصنوع في مصر: محوّل بين خمسة موديلات مع كلمة عملاقة تتحرك مع السكرول، وألوان للاختيار، وأداة لتحديد المقاس، وأسعار بالجنيه المصري وحركة سلسة في كل الصفحة." },
     ],
   },
   solutions: {
